@@ -1,0 +1,22 @@
+{% extends 'HegesAppMainBundle:Default:hegesappbase.html.twig' %}
+{% block hegesappbody %}
+<p><h1 class="tabla_datos">Dato 2</h1></p>
+<table><tr><th class="tabla_datos">Id</th>
+        <th class="tabla_datos">Valor</th>
+        <th class="tabla_datos">Hora de Creacion</th>
+        <th class="tabla_datos">Valor Previo</th>
+        <th class="tabla_datos">Hora Modificacion</th>
+    </tr>
+    <tr><td class="tabla_datos">{{ entity.id }}</td>
+        <td class="tabla_datos">{{ entity.value }}</td>
+        <td class="tabla_datos">{{ entity.creationtime|date('Y-m-d H:i:s') }}</td>
+        <td class="tabla_datos">{{ entity.previousvalue }}</td>
+        <td class="tabla_datos">{{ entity.updatetime|date('Y-m-d H:i:s') }}</td>
+    </tr>
+    {# <tr><td class="tabla_datos"><a href="{{ path('data') }}">Back to the list</a> #}</td>
+    <tr><td class="tabla_datos" colspan="2"><form action="{{ path('data_edit', { 'id': entity.id }) }}"><button type="submit">EDITAR</button></form></td>
+        <td class="tabla_datos" colspan="2"><form action="{{ path('data_delete', { 'id': entity.id }) }}" method="post">
+            {{ form_widget(delete_form) }}
+            <button type="submit">BORRAR</button></form></td>
+</tr></table>
+{% endblock hegesappbody %}

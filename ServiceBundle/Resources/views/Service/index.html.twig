@@ -1,0 +1,28 @@
+{% extends 'HegesAppMainBundle:Default:hegesappbase.html.twig' %}
+{% block hegesappbody %}
+<p><h1 class="tabla_datos">SERVICIOS CONFIGURADOS</h1></p>
+<p>BUSCAR <input type="text" name="q" value=""> <span id="count"></span></p>
+<p id="none" style="display:none">No hay coincidencias para tu busqueda!</p>
+<form action="{{ path('service_new') }}"><button type="submit">CREAR SERVICIO</button></form>
+<ul class="tabla_datos">
+    <li class="tabla_datos"><table class="tabla_datos"><tr>
+        <th width="150" class="tabla_datos">Nodo Asociado</th>
+        <th width="300" class="tabla_datos">Nombre Servicio</th>
+        <th width="200" class="tabla_datos">Fichero Configuración</th>
+        <th width="150" class="tabla_datos">Monitor</th>
+        <td width="200" class="tabla_datos_sin_borde"> </td>
+    </tr></table></li>
+</ul>
+<ul id="names" class="tabla_datos">
+    {% for entity in entities %}
+    <li class="tabla_datos"><table class="tabla_datos"><tr>
+        <td width="150" class="tabla_datos">{{ entity.fkNode }}</td>
+        <td width="300" class="tabla_datos">{{ entity.name }}</td>
+        <td width="200" class="tabla_datos">{{ entity.configfilename }}</td>
+        <td width="150" class="tabla_datos">{{ entity.fkMonitor }}</td>
+        <td width="100" class="tabla_datos_sin_borde"><form action="{{ path('service_show', { 'id': entity.id }) }}"><button type="submit">MOSTRAR</button></form></td>
+        <td width="100" class="tabla_datos_sin_borde"><form action="{{ path('service_edit', { 'id': entity.id }) }}"><button type="submit">EDITAR</button></form></td>
+    </tr></table></li>
+    {% endfor %}
+</ul>
+{% endblock hegesappbody %}

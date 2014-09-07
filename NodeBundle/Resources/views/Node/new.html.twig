@@ -1,0 +1,11 @@
+{% extends 'HegesAppMainBundle:Default:hegesappbase.html.twig' %}
+{% block hegesappbody %}
+<p><h1 class="tabla_datos">Crear Nuevo Nodo</h1></p>
+<form id="form_datos" action="{{ path('node_create') }}" method="post" {{ form_enctype(form) }}>
+    {{ form_widget(form) }}</form>
+<table>
+    <tr><td class="tabla_datos_sin_borde"><form><button form="form_datos" type="submit">CREAR</button></form></td>
+        <!-- <td class="tabla_datos_sin_borde"><form action="{{ path('node') }}"><button type="submit">ATRAS</button></form></td></tr> -->
+        <td class="tabla_datos_sin_borde"><form><input type="button" value="ATRAS" onClick="history.back();"></form></td></tr>
+</table>		
+{% endblock hegesappbody %}

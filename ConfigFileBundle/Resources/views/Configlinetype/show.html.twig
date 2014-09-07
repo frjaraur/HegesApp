@@ -1,0 +1,18 @@
+{% extends 'HegesAppMainBundle:Default:hegesappbase.html.twig' %}
+{% block hegesappbody %}
+<p><h1 class="tabla_datos">TIPO DE LINEA DE CONFIGURACION</h1></p>
+<table><tr><th class="tabla_datos">Id</th>
+        <th class="tabla_datos">Nombre</th>
+        <th class="tabla_datos">Numero de Campos</th>
+        <th class="tabla_datos">Delimitador</th></tr>
+    <tr><td class="tabla_datos">{{ entity.id }}</td>
+        <td class="tabla_datos">{{ entity.name }}</td>
+        <td class="tabla_datos">{{ entity.fieldsnumber }}</td>
+        <td class="tabla_datos">{{ entity.delimiter }}</td></tr>
+    <!-- <tr><td class="tabla_datos_sin_borde"><form action="{{ path('configlinetype') }}"><button type="submit">ATRAS</button></form></td> -->
+    <tr><td class="tabla_datos_sin_borde"><form><input type="button" value="ATRAS" onClick="history.back();"></form></td>
+        <td class="tabla_datos_sin_borde"><form action="{{ path('configlinetype_edit', { 'id': entity.id }) }}"><button type="submit">EDITAR</button></form></td>
+        <td class="tabla_datos_sin_borde"><form action="{{ path('configlinetype_copy', { 'id': entity.id }) }}"><button type="submit">COPIAR</button></form></td>
+        <td class="tabla_datos_sin_borde"><form action="{{ path('configlinetype_delete', { 'id': entity.id }) }}" method="post">{{ form_widget(delete_form) }}<button type="submit">BORRAR</button></form></td></tr>
+</table>
+{% endblock hegesappbody %}

@@ -1,0 +1,29 @@
+{% extends 'HegesAppMainBundle:Default:hegesappbase.html.twig' %}
+{% block hegesappbody %}
+<p><h1 class="tabla_datos">Propiedades del Monitor</h1></p>
+<table><tr><th class="tabla_datos">Id</th>
+        <th class="tabla_datos">Execname</th>
+        <th class="tabla_datos">Params</th>
+        <th class="tabla_datos">Description</th>
+        <th class="tabla_datos">Lastversion</th>
+    </tr>
+    <tr><td class="tabla_datos">{{ entity.id }}</td>
+        <td class="tabla_datos">{{ entity.execname }}</td>
+        <td class="tabla_datos">{{ entity.params }}</td>
+        <td class="tabla_datos">{{ entity.description }}</td>
+        <td class="tabla_datos">{{ entity.lastversion }}</td>
+     </tr>
+{# </table> #}
+{# <ul><li><a href="{{ path('monitor') }}">Back to the list</a></li> #}
+    {# <li><a href="{{ path('monitor_edit', { 'id': entity.id }) }}">Edit</a></li> #}
+    {# <li><form action="{{ path('monitor_delete', { 'id': entity.id }) }}" method="post"> #}
+            {# {{ form_widget(delete_form) }}<button type="submit">Delete</button> #}
+        {# </form></li> #}
+{# </ul> #}
+    <!-- <tr><td class="tabla_datos_sin_borde"><form action="{{ path('monitor') }}"><button type="submit">ATRAS</button></form></td> -->
+    <tr><td class="tabla_datos_sin_borde"><form><input type="button" value="ATRAS" onClick="history.back();"></form></td>
+        <td class="tabla_datos_sin_borde"><form action="{{ path('monitor_edit', { 'id': entity.id }) }}"><button type="submit">EDITAR</button></form></td>
+        <td class="tabla_datos_sin_borde"><form action="{{ path('monitor_delete', { 'id': entity.id }) }}" method="post">{{ form_widget(delete_form) }}<button type="submit">BORRAR</button></form></td>
+    </tr>
+</table>
+{% endblock hegesappbody %}

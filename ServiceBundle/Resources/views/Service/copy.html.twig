@@ -1,0 +1,10 @@
+{% extends 'HegesAppMainBundle:Default:hegesappbase.html.twig' %}
+{% block hegesappbody %}
+<p><h1 class="tabla_datos">Copiar Servicio</h1></p>
+<form id="form_datos" action="{{ path('service_fullcopy', { 'original_service_id': original_entity.id })}}" method="post" {{ form_enctype(form) }}>
+    {{ form_widget(form) }}</form>
+<table><tr><td class="tabla_datos_sin_borde"><form><button form="form_datos" type="submit">GUARDAR</button></form></td>
+            <!-- <td class="tabla_datos_sin_borde"><form action="{{ path('service') }}"><button type="submit">ATRAS</button></form></td> -->
+            <td class="tabla_datos_sin_borde"><form><input type="button" value="ATRAS" onClick="history.back();"></form></td>
+ </tr></table>
+{% endblock hegesappbody %}

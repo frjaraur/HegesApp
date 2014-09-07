@@ -1,0 +1,17 @@
+HegesAppNodeBundle_node:
+    resource: "@HegesAppNodeBundle/Resources/config/routing/node.yml"
+    prefix:   /node
+    
+    
+HegesAppNodeBundle_nodetype:
+    resource: "@HegesAppNodeBundle/Resources/config/routing/nodetype.yml"
+    prefix:   /node/nodetype
+    
+  
+HegesAppNodeBundle_os:
+    resource: "@HegesAppNodeBundle/Resources/config/routing/os.yml"
+    prefix:   /node/os
+
+HegesAppNodeBundle_nodemain:
+    resource: "@HegesAppNodeBundle/Resources/config/routing/nodemain.yml"
+    prefix:   /nodemain  

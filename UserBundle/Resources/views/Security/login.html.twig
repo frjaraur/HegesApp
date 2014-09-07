@@ -1,0 +1,19 @@
+{% extends "FOSUserBundle::layout.html.twig" %}
+{% block fos_user_content %}
+{% if error %}
+    <p>{{ error|trans({}, 'FOSUserBundle') }}</p>
+{% endif %}
+<form action="{{ path("fos_user_security_check") }}" method="post">
+<input type="hidden" name="_csrf_token" value="{{ csrf_token }}">
+<table align="center" class="tabla_login">
+    <tr><td class="tabla_login"><h1 class="tabla_login">Acceso al Portal de Herramientas de Gestión</h1></td></tr>
+    <tr><td class="tabla_login">Usuario</td></tr>
+    <tr><td class="tabla_login"><input type="text" id="username" name="_username" value="{{ last_username }}"></td></tr>
+    <tr><td class="tabla_login">Contraseña</td></tr>
+    <tr><td class="tabla_login"><input type="password" id="password" name="_password"></td></tr>
+    <tr><td class="tabla_login"><input type="checkbox" id="remember_me" name="_remember_me" value="on"> Recordar Usuario</td></tr>
+    <tr><td class="tabla_login"><input type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans({}, 'FOSUserBundle') }}"></td></tr>
+</table></form>
+{# <form action="{{ path('fos_user_registration_register') }}" method="post"> #}
+    {# <button type="submit">REGISTRARSE</button></form> #}
+{% endblock fos_user_content %}

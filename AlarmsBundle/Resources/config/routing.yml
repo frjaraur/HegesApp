@@ -1,0 +1,3 @@
+HegesAppAlarmsBundle_alarm:
+    resource: "@HegesAppAlarmsBundle/Resources/config/routing/alarm.yml"
+    prefix:   /alarm

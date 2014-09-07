@@ -1,0 +1,13 @@
+{% extends 'HegesAppMainBundle:Default:hegesappbase.html.twig' %}
+{% block hegesappbody %}
+<table align="center">
+    <tr><td class="ico_home_img"><a class="ico_home_img" href="{{ path('alarm') }}"><img src="/hegesapp/bundles/hegesappmain/img/ico-alarmas.jpg"></a></td>
+        <td class="ico_home_img"><a class="ico_home_img" href="{{ path('alarm_ovoprofile',{ 'ovoprofile': "p_operador" }) }}"><img src="/hegesapp/bundles/hegesappmain/img/ico-alarmas.jpg"></a></td>
+    </tr>
+    <tr><td class="ico_home_txt"><a class="ico_home_txt" href="{{ path('configfile') }}">Mis Alarmas (ONLINE)</a></td>
+	    <td class="ico_home_txt"><a class="ico_home_txt" href="{{ path('alarm_ovoprofile',{ 'ovoprofile': "p_operador" }) }}">Alarmas de Operación (ONLINE)</a></td>
+    </tr>
+    <tr><td class="ico_home_img"><a class="ico_home_img" href="{{ path('alarm_nodeindex') }}"><img src="/hegesapp/bundles/hegesappmain/img/ico-alarmas.jpg"></a></td></tr>
+	    <td class="ico_home_txt"><a class="ico_home_txt" href="{{ path('alarm_nodeindex') }}">Alarmas por nodo</a></td>
+</tr></table>
+{% endblock hegesappbody %}

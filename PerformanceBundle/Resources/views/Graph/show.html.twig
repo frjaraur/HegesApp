@@ -1,0 +1,34 @@
+{% extends 'HegesAppMainBundle:Default:hegesappbase.html.twig' %}
+{% block hegesappbody %}
+<p><h1 class="tabla_datos">Propiedades de la Gráfica</h1></p>
+<table class="tabla_datos">
+    <tr><th class="tabla_datos">Nombre Gráfica</th>
+        <td class="tabla_datos">{{ entity.graphname }}</td></tr>
+        <tr><th class="tabla_datos">Descripción</th>
+            <td class="tabla_datos">{{ entity.graphdescription }}</td></tr>
+        <tr><th class="tabla_datos">URL</th>
+            <td class="tabla_datos"><i>{{ entity.graphurl }}</i></td></tr>
+{% if is_granted("ROLE_ADMIN") %}          
+            <tr><th class="tabla_datos">Usuario</th>
+            <td class="tabla_datos"><i>{{ entity.graphurluser }}</i></td></tr>
+        <tr><th class="tabla_datos">Password</th>
+            <td class="tabla_datos"><i>{{ entity.graphurlpasswd }}</i></td></tr>
+        <tr><th class="tabla_datos">URL Modificada</th>
+            <td><i>{{ entity.graphurlmod }}</i></td></tr>
+{% endif %}
+        <tr><th class="tabla_datos">Icono</th>
+            <td class="tabla_datos">{{ entity.graphicon }}</td></tr>
+        <tr><th class="tabla_datos">Asignación a Nodo</th>
+            <td class="tabla_datos">{{ entity.fknodeid  }}</td></tr>
+        <tr><th class="tabla_datos">Asignación a Sistema Operativo</th>
+            <td class="tabla_datos">{{ entity.fkosid  }}</td></tr>
+        <!-- <tr><td class="tabla_datos_sin_borde"><form action="{{ path('graph') }}"><button type="submit">ATRAS</button></form></td> -->
+        <tr><td class="tabla_datos_sin_borde"><form><input type="button" value="ATRAS" onClick="history.back();"></form></td>
+            <td class="tabla_datos_sin_borde"><form action="{{ path('graph_edit', { 'id': entity.id }) }}"><button type="submit">EDITAR</button></form></td>
+            <td class="tabla_datos_sin_borde"><form action="{{ path('graph_copy', { 'id': entity.id }) }}"><button type="submit">COPIAR</button></form></td>
+            <td class="tabla_datos_sin_borde"><form action="{{ path('graph_delete', { 'id': entity.id }) }}" method="post">{{ form_widget(delete_form) }}<button type="submit">BORRAR</button></form></td>
+            <td class="tabla_datos_sin_borde"></td>
+            <td class="tabla_datos_sin_borde"></td>
+            <td class="tabla_datos_sin_borde"></td></tr>
+</table>
+{% endblock hegesappbody %}

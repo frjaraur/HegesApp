@@ -1,0 +1,210 @@
+<?php
+
+namespace HegesApp\PerformanceBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * HegesApp\PerformanceBundle\Entity\Graph
+ *
+ * @ORM\Table(name="GRAPH")
+ * @ORM\Entity
+ * @ORM\Entity(repositoryClass="HegesApp\PerformanceBundle\Repository\PerformanceRepository")
+ */
+class Graph
+{
+    /**
+     * @var integer $id
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var string $graphname
+     *
+     * @ORM\Column(name="GRAPHNAME", type="string", length=45, nullable=false, unique=true)
+     */
+    private $graphname;
+
+    /**
+     * @var text $graphdescription
+     *
+     * @ORM\Column(name="GRAPHDESCRIPTION", type="text", nullable=true)
+     */
+    private $graphdescription;
+
+    /**
+     * @var string graphurl
+     *
+     * @ORM\Column(name="GRAPHURL", type="string", length=255, nullable=true)
+     */
+    private $graphurl;
+
+    /**
+     * @var string $graphicon
+     *
+     * @ORM\Column(name="GRAPHICON", type="string", length=20, nullable=true)
+     */
+    private $graphicon;
+    
+    /**
+     * @var $fk_nodeid
+     *
+     * @ORM\ManyToOne(targetEntity="\HegesApp\NodeBundle\Entity\Node")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="FK_NODEID", referencedColumnName="id", nullable=true)
+     * })
+     */
+    private $fk_nodeid;
+
+    /**
+     * @var $fk_osid
+     *
+     * @ORM\ManyToOne(targetEntity="\HegesApp\NodeBundle\Entity\Os")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="FK_OSID", referencedColumnName="id", nullable=true)
+     * })
+     */
+    private $fk_osid;
+
+
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set graphname
+     *
+     * @param string $graphname
+     */
+    public function setGraphname($graphname)
+    {
+        $this->graphname = $graphname;
+    }
+
+    /**
+     * Get graphname
+     *
+     * @return string
+     */
+    public function getGraphname()
+    {
+        return $this->graphname;
+    }
+
+    /**
+     * Set graphdescription
+     *
+     * @param text $graphdescription
+     */
+    public function setGraphdescription($graphdescription)
+    {
+        $this->graphdescription = $graphdescription;
+    }
+
+    /**
+     * Get graphdescription
+     *
+     * @return text 
+     */
+    public function getGraphdescription()
+    {
+        return $this->graphdescription;
+    }
+
+    /**
+     * Set graphurl
+     *
+     * @param string $graphurl
+     */
+    public function setGraphurl($graphurl)
+    {
+        $this->graphurl = $graphurl;
+    }
+
+    /**
+     * Get graphurl
+     *
+     * @return string 
+     */
+    public function getGraphurl()
+    {
+        return $this->graphurl;
+    }
+
+    /**
+     * Set graphicon
+     *
+     * @param string $graphicon
+     */
+    public function setGraphicon($graphicon)
+    {
+    	$this->graphicon = $graphicon;
+    }
+    
+    /**
+     * Get graphicon
+     *
+     * @return string
+     */
+    public function getGraphicon()
+    {
+    	return $this->graphicon;
+    }
+    
+    
+    /**
+     * Set fk_nodeid
+     *
+     * @param HegesApp\NodeBundle\Entity\Node $fk_nodeid
+     */
+    public function setFkNodeid(\HegesApp\NodeBundle\Entity\Node $fk_nodeid = null)
+    {
+        $this->fk_nodeid = $fk_nodeid;
+    }
+
+    /**
+     * Get fk_nodeid
+     *
+     * @return HegesApp\NodeBundle\Entity\Node 
+     */
+    public function getFkNodeid()
+    {
+        return $this->fk_nodeid;
+    }
+
+    /**
+     * Set fk_osid
+     *
+     * @param HegesApp\NodeBundle\Entity\Os $fk_osid
+     */
+    public function setFkOsid(\HegesApp\NodeBundle\Entity\Os $fk_osid = null)
+    {
+        $this->fk_osid = $fk_osid;
+    }
+
+    /**
+     * Get fk_osid
+     *
+     * @return HegesApp\NodeBundle\Entity\Os 
+     */
+    public function getFkOsid()
+    {
+        return $this->fk_osid;
+    }
+    
+    public function __toString()
+    {
+    	return $this->getGraphName();
+    }
+}

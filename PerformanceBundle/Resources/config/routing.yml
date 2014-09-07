@@ -1,0 +1,3 @@
+HegesAppPerformanceBundle_graph:
+    resource: "@HegesAppPerformanceBundle/Resources/config/routing/graph.yml"
+    prefix:   /graph 

@@ -1,0 +1,30 @@
+nodetype:
+    pattern:  /
+    defaults: { _controller: "HegesAppNodeBundle:Nodetype:index" }
+
+nodetype_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "HegesAppNodeBundle:Nodetype:show" }
+
+nodetype_new:
+    pattern:  /admin/new
+    defaults: { _controller: "HegesAppNodeBundle:Nodetype:new" }
+
+nodetype_create:
+    pattern:  /admin/create
+    defaults: { _controller: "HegesAppNodeBundle:Nodetype:create" }
+    requirements: { _method: post }
+
+nodetype_edit:
+    pattern:  /admin/{id}/edit
+    defaults: { _controller: "HegesAppNodeBundle:Nodetype:edit" }
+
+nodetype_update:
+    pattern:  /admin/{id}/update
+    defaults: { _controller: "HegesAppNodeBundle:Nodetype:update" }
+    requirements: { _method: post }
+
+nodetype_delete:
+    pattern:  /admin/{id}/delete
+    defaults: { _controller: "HegesAppNodeBundle:Nodetype:delete" }
+    requirements: { _method: post }

@@ -1,0 +1,13 @@
+{% extends 'HegesAppMainBundle:Default:hegesappbase.html.twig' %}
+{% block hegesappbody %}
+<p><h1 class="tabla_datos">Modificar un tipo de línea de configuración</h1></p>
+<form id="form_datos" action="{{ path('configlinetype_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>
+    {{ form_widget(edit_form) }}</form>
+<table><tr><td class="tabla_datos_sin_borde"><form><button form="form_datos" type="submit">GUARDAR</button></form></td>
+        <!-- <td class="tabla_datos_sin_borde"><form action="{{ path('configlinetype') }}"><button type="submit">ATRAS</button></form></td> -->
+        <td class="tabla_datos_sin_borde"><form><input type="button" value="ATRAS" onClick="history.back();"></form></td>
+        <td class="tabla_datos_sin_borde"><form action="{{ path('configlinetype_delete', { 'id': entity.id }) }}" method="post">
+            {{ form_widget(delete_form) }}
+            <button type="submit"  onclick="return(confirm('No hay marcha atrás, este cambio borrará todas las líneas de configuración de este tipo de todos los nodos, estás seguro de que quieres borrar este tipo de línea de configuración?'))">BORRAR</button></form></td>
+</tr></table>
+{% endblock hegesappbody %}

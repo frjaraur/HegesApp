@@ -1,0 +1,39 @@
+service:
+    pattern:  /
+    defaults: { _controller: "HegesAppServiceBundle:Service:index" }
+
+service_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "HegesAppServiceBundle:Service:show" }
+
+service_new:
+    pattern:  /admin/new
+    defaults: { _controller: "HegesAppServiceBundle:Service:new" }
+
+service_create:
+    pattern:  /admin/create
+    defaults: { _controller: "HegesAppServiceBundle:Service:create" }
+    requirements: { _method: post }
+
+service_edit:
+    pattern:  /admin/{id}/edit
+    defaults: { _controller: "HegesAppServiceBundle:Service:edit" }
+
+service_update:
+    pattern:  /admin/{id}/update
+    defaults: { _controller: "HegesAppServiceBundle:Service:update" }
+    requirements: { _method: post }
+
+service_delete:
+    pattern:  /admin/{id}/delete
+    defaults: { _controller: "HegesAppServiceBundle:Service:delete" }
+    requirements: { _method: post }
+    
+service_copy:
+    pattern:  /admin/{id}/copy
+    defaults: { _controller: "HegesAppServiceBundle:Service:copy" }
+
+service_fullcopy:
+    pattern:  /admin/fullcopy/{original_service_id}
+    defaults: { _controller: "HegesAppServiceBundle:Service:fullcopy" }
+    requirements: { _method: post }    

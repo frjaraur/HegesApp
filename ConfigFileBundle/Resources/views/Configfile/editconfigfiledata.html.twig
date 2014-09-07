@@ -1,0 +1,17 @@
+{% extends 'HegesAppMainBundle:Default:hegesappbase.html.twig' %}
+{% block hegesappbody %}
+<p><h1 class="tabla_datos">Linea del Fichero de Configuracion - EDITAR</h1></p>
+<table><tr><td class="tabla_datos">{{ entity.id }} {{ entity.fkConfigfield }} {{ entity.value }}</td>
+        <td class="tabla_datos_sin_borde"><form action="{{ path('data_show', { 'id':  entity.id }) }}">
+            {{ form_widget(form) }}
+            {{ form_rest(form) }}
+            <button type="submit">EDITAR</button></form></td>
+    </tr>
+    <!-- <tr><td class="tabla_datos_sin_borde"><form action="{{ path('configline') }}"><button type="submit">ATRAS</button></form></td> -->
+    <tr><td class="tabla_datos_sin_borde"><form><input type="button" value="ATRAS" onClick="history.back();"></form></td>
+        <td class="tabla_datos_sin_borde"><form action="{{ path('data_delete', { 'id': entity.id }) }}" method="post">
+            {{ form_widget(delete_form) }}
+            <button type="submit">BORRAR</button></form></td>
+    </tr>
+</table>
+{% endblock hegesappbody %}

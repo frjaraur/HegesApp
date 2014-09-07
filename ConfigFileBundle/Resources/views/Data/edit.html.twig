@@ -1,0 +1,19 @@
+{% extends 'HegesAppMainBundle:Default:hegesappbase.html.twig' %}
+{% block hegesappbody %}
+<p><h1 class="tabla_datos">Modificar el valor de un dato de configuración</h1></p>
+<form id="form_datos" action="{{ path('data_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>
+    {{ form_widget(edit_form) }}</form>
+<table><tr><td class="tabla_datos_sin_borde"><form><button form="form_datos" type="submit">GUARDAR</button></form></td>
+        <!-- <td class="tabla_datos_sin_borde"><form action="{{ path('configfile_editconfigfile', { 'lineid': entity.fkConfigline.id }) }}"><button type="submit">ATRAS</button></form></td> -->
+        <td class="tabla_datos_sin_borde">
+        <!--    <form><input type="button" value="ATRAS" onClick="history.back();"></form> -->
+        <form action="{{ path('configfile_editconfigfile', { 'lineid': entity.fkconfigline.id }) }}"><button type="submit">ATRAS</button></form>
+        </td>
+        {# <td class="tabla_datos_sin_borde"> #}
+            {# <form action="{{ path('data_delete', { 'id': entity.id }) }}" method="post"> #}
+            {# {{ form_widget(delete_form) }} #}
+                {# <button type="submit">BORRAR</button> #}
+            {# </form> #}
+        {# </td> #}
+</tr></table>
+{% endblock hegesappbody %}

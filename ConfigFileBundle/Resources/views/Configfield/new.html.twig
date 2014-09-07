@@ -1,0 +1,20 @@
+{% extends 'HegesAppMainBundle:Default:hegesappbase.html.twig' %}
+{% block hegesappbody %}
+<p><h1 class="tabla_datos">Campo de Fichero de Configuracion - CREAR</h1></p>
+<form id="form_datos" action="{{ path('configfield_create') }}" method="post" {{ form_enctype(form) }}>
+{{ form_widget(form) }}
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+<table><tr><td class="tabla_datos_sin_borde"><button type="submit">CREAR</button></td>
+         <td class="tabla_datos_sin_borde"><form action="{{ path('configfield') }}"><button type="submit">ATRAS</button></form></td></tr>
+        <!--<td class="tabla_datos_sin_borde"><form><input type="button" value="ATRAS" onClick="history.back();"></form></td></tr>-->
+</table>
+{% endblock hegesappbody %}

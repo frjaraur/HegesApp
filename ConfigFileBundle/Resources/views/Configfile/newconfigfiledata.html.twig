@@ -1,0 +1,21 @@
+{% extends 'HegesAppMainBundle:Default:hegesappbase.html.twig' %}
+{% block hegesappbody %}
+<p><h1 class="tabla_datos">Fichero de Configuración - NUEVO DATO del Fichero de Configuración</h1></p>
+{# {% if lineid is defined %} <p><h1 class="tabla_datos">lineid {{ lineid }}</h1></p> {% endif %}#}
+{# {% if configfieldid is defined %} <p><h1 class="tabla_datos">configfieldid {{ configfieldid }}</h1></p> {% endif %}#}
+{# {% if configfieldid is defined %} <p><h1 class="tabla_datos">configfieldid {{ configfieldid }}</h1></p> {% endif %}#}
+{# {% if linetypeid is defined %} <p><h1 class="tabla_datos">linetypeid {{ linetypeid }}</h1></p> {% endif %}#}
+{# {% if fieldorder is defined %} <p><h1 class="tabla_datos">FIELDORDER {{ fieldorder }}</h1></p> {% endif %}#}
+{# {% if serviceid is defined %} <p><h1 class="tabla_datos">serviceid {{ serviceid }}</h1></p> {% endif %}#}
+{# {% if lastdataid is defined %} <p><h1 class="tabla_datos">lastdataid {{ lastdataid }}</h1></p> {% endif %}#}
+<table><tr><td class="tabla_datos_sin_borde"><form action="{{ path('configfile_createconfigfiledata', { 'fieldorder': fieldorder ,'lastdataid': lastdataid , 'serviceid': serviceid }) }}">
+            {{ form_widget(form) }}
+            {{ form_rest(form) }}
+            <button type="submit">CREAR</button></form></td>
+    </tr>
+</table>
+{# <form action="{{ path('data_create', { 'serviceid': serviceid }) }}" method="post" {{ form_enctype(form) }}> #}
+    {# {{ form_widget(form) }} #}
+    {# {{ serviceid }} #}
+    {# <button type="submit">CREAR</button></form>#}
+{% endblock hegesappbody %}

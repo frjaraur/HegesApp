@@ -1,0 +1,35 @@
+data:
+    pattern:  /
+    defaults: { _controller: "HegesAppConfigFileBundle:Data:index" }
+
+data_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "HegesAppConfigFileBundle:Data:show" }
+
+data_new:
+    pattern:  /new/{serviceid}
+    defaults: { _controller: HegesAppConfigFileBundle:Data:new,serviceid: 0 }
+
+data_create:
+    pattern:  /create/{serviceid}
+    defaults: { _controller: "HegesAppConfigFileBundle:Data:create" }
+    requirements: { _method: post }
+
+data_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "HegesAppConfigFileBundle:Data:edit" }
+
+data_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "HegesAppConfigFileBundle:Data:update" }
+    requirements: { _method: post }
+
+data_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "HegesAppConfigFileBundle:Data:delete" }
+    requirements: { _method: post }
+
+data_error:
+    pattern:  /error
+    defaults: { _controller: "HegesAppConfigFileBundle:Configfile:error" }
+    

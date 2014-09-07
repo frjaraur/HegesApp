@@ -1,0 +1,7 @@
+parameters:
+#    heges_app_node.example.class: HegesApp\NodeBundle\Example
+
+services:
+#    heges_app_node.example:
+#        class: %heges_app_node.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

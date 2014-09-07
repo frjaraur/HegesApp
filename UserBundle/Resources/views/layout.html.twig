@@ -1,0 +1,31 @@
+{# {% extends 'HegesAppMainBundle:Default:hegesappbase.html.twig' %}#}
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="utf-8"><title>Herramientas de Gestión</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    
+        {% stylesheets '@HegesAppMainBundle/Resources/public/css/hegesapp.css' %}
+    <link href="{{ asset_url }}" rel="stylesheet">
+    {% endstylesheets %}
+</head>    
+    
+<body class="tabla_datos">
+    <div class="navbar navbar-fixed-top" width="100%">
+        <table width="100%">
+            <tr width="100%">
+		        <td width="150">{% image '@HegesAppMainBundle/Resources/public/img/logo-ono.png' %}
+                    <img src="{{ asset_url }}" width="120">
+                    {% endimage %}</td>
+            </tr>
+        </table>
+    </div>
+        <div name="fos_user_content">
+        {% block fos_user_content %}
+        {% endblock fos_user_content %}
+    </div>  
+    
+    
+    
+    </body></html>

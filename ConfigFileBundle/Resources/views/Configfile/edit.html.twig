@@ -1,0 +1,25 @@
+{% extends 'HegesAppMainBundle:Default:hegesappbase.html.twig' %}
+{% block hegesappbody %}
+<p><h1 class="tabla_datos">Línea de Configuración {{lineid}}</h1></p>
+<table>
+{% set serviceid = 0 %}
+{% if entities|length > 1 %}
+{% for entity in entities %}
+    <tr><th class="tabla_datos">{{ entity.fkConfigfield }}</th>
+	    <td class="tabla_datos">{{ entity.value }}</td>
+        <td class="tabla_datos_sin_borde"><form action="{{ path('data_edit', { 'id':  entity.id }) }}"><button type="submit">EDITAR</button></form></td>
+    </tr>
+    {% set serviceid = entity.fkConfigline.fkService.id %}
+{% endfor %}
+{% endif %}
+    <tr><td class="tabla_datos_sin_borde"><form action="{{ path('configfile_serviceselect', { 'serviceid': serviceid }) }}" method="post"><button type="submit">ATRAS</button></form></td>
+    <!--<tr><td class="tabla_datos_sin_borde"><form><input type="button" value="ATRAS" onClick="history.back();"></form></td>-->
+		<td class="tabla_datos_sin_borde" colspan="2"><form action="{{ path('configline_delete', { 'id': lineid }) }}" method="post">
+            {{ form_widget(delete_form) }}
+            <button type="submit" onclick="return(confirm('No hay marcha atrás, estás seguro de que quieres borrar la línea de configuración?'))">BORRAR LINEA</button></form></td>
+            <td class="tabla_datos_sin_borde"><form action="{{ path('configline_copy', { 'id': lineid }) }}"><button type="submit">COPIAR</button></form></td>
+    </tr>
+    
+            
+</table>
+{% endblock hegesappbody %}

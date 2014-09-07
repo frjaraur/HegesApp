@@ -1,0 +1,10 @@
+<p><h1 class="tabla_datos">Modificar una línea de configuración</h1></p>
+<table><tr><td class="tabla_datos_sin_borde"><form action="{{ path('configline_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>
+            {{ form_widget(edit_form) }}
+			<button type="submit">EDITAR</button></form></td>
+        <!-- <td class="tabla_datos_sin_borde"><form action="{{ path('configline') }}"><button type="submit">ATRAS</button></form></td> -->
+        <td class="tabla_datos_sin_borde"><form><input type="button" value="ATRAS" onClick="history.back();"></form></td>
+        <td class="tabla_datos_sin_borde"><form action="{{ path('configline_delete', { 'id': entity.id }) }}" method="post">
+            {{ form_widget(delete_form) }}
+            <button type="submit" onclick="if(!confirm('Estas seguro de borrar el elemento, no hay marcha atrás..?'){return false;}"}>BORRAR</button></form></td>
+</tr></table>

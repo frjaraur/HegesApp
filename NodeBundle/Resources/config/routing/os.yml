@@ -1,0 +1,30 @@
+os:
+    pattern:  /
+    defaults: { _controller: "HegesAppNodeBundle:Os:index" }
+
+os_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "HegesAppNodeBundle:Os:show" }
+
+os_new:
+    pattern:  /admin/new
+    defaults: { _controller: "HegesAppNodeBundle:Os:new" }
+
+os_create:
+    pattern:  /admin/create
+    defaults: { _controller: "HegesAppNodeBundle:Os:create" }
+    requirements: { _method: post }
+
+os_edit:
+    pattern:  /admin/{id}/edit
+    defaults: { _controller: "HegesAppNodeBundle:Os:edit" }
+
+os_update:
+    pattern:  /admin{id}/update
+    defaults: { _controller: "HegesAppNodeBundle:Os:update" }
+    requirements: { _method: post }
+
+os_delete:
+    pattern:  /admin/{id}/delete
+    defaults: { _controller: "HegesAppNodeBundle:Os:delete" }
+    requirements: { _method: post }

@@ -1,0 +1,17 @@
+{% extends 'HegesAppMainBundle:Default:hegesappbase.html.twig' %}
+{% block hegesappbody %}
+<p><h1 class="tabla_datos">Fichero de Configuracion - COMPLETADO  {{ data_entity.fkConfigfield }} {{ data_entity.fkConfigfield.fieldorder }}</h1></p>
+{# {% if numfields is defined %}<h1 class="tabla_datos">NumCampos {{ numfields }}</h1>{% endif %} #}
+{# {% if lastdataid is defined %}<h1 class="tabla_datos">UltimoDatoId {{ lastdataid }}</h1>{% endif %} #}
+{# {% if fieldorder is defined %}<h1 class="tabla_datos">OrdenCampo {{ fieldorder }}</h1>{% endif %} #}
+<table><tr><td class="tabla_datos_sin_borde"><form action="{{ path('configfile_finished', {'lastdataid': lastdataid }) }}">
+            {{ form_widget(form) }}
+            {{ form_rest(form) }}
+            <button type="submit">TERMINAR</button></form></td>
+    </tr>
+{# <form action="{{ path('data_create', { 'serviceid': serviceid }) }}" method="post" {{ form_enctype(form) }}> #}
+    {# {{ form_widget(form) }}#}
+    {# {{ serviceid }}	#}
+    {# <button type="submit">Create</button></form>#}
+</table>
+{% endblock hegesappbody %}

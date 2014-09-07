@@ -1,0 +1,50 @@
+graph:
+    pattern:  /
+    defaults: { _controller: "HegesAppPerformanceBundle:Graph:index" }
+
+graph_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "HegesAppPerformanceBundle:Graph:show" }
+
+graph_new:
+    pattern:  /admin/new
+    defaults: { _controller: "HegesAppPerformanceBundle:Graph:new" }
+
+graph_create:
+    pattern:  /admin/create
+    defaults: { _controller: "HegesAppPerformanceBundle:Graph:create" }
+    requirements: { _method: post }
+
+graph_edit:
+    pattern:  /admin/{id}/edit
+    defaults: { _controller: "HegesAppPerformanceBundle:Graph:edit" }
+
+graph_update:
+    pattern:  /admin/{id}/update
+    defaults: { _controller: "HegesAppPerformanceBundle:Graph:update" }
+    requirements: { _method: post }
+
+graph_delete:
+    pattern:  /admin/{id}/delete
+    defaults: { _controller: "HegesAppPerformanceBundle:Graph:delete" }
+    requirements: { _method: post }
+
+graph_main:
+    pattern:  /main
+    defaults: { _controller: "HegesAppPerformanceBundle:Graph:main" }
+    
+graph_node:
+    pattern:  /node/{nodeid}
+    defaults: { _controller: "HegesAppPerformanceBundle:Graph:graphsfornode" }
+    
+graph_copy:
+    pattern:  /admin/{id}/copy
+    defaults: { _controller: "HegesAppPerformanceBundle:Graph:copy" }
+
+graph_drawsimplegraph:
+    pattern:  /simplegraph/{nodename}/{graphname}/{start}/{end}
+    defaults: { _controller: "HegesAppPerformanceBundle:Graph:drawsimplegraph",start: 0,end: 0 }
+    
+graph_drawcustomgraph:
+    pattern:  /customgraph/{nodename}/{graphname}/{startdate}/{enddate}
+    defaults: { _controller: "HegesAppPerformanceBundle:Graph:drawcustomgraph",startdate: 0,enddate: 0 }                     

@@ -1,0 +1,11 @@
+Exportacion de datos del Servicio {{ service_name }} en el nodo {{ service_node }};
+{# {{ configfields|raw|join(';') }}{% set lastlineid=0 %}{% set nodeid = 0 %}   #}
+{# {% for configdata in configdataentries %}#}
+{# {% if lastlineid != configdata.fkConfigline.id and lastlineid!= 0 %}{{ configdata.value }};{% else %}{{ configdata.value }};{% endif %}#}
+{# {% set lastlineid=configdata.fkConfigline.id %}{% set nodeid = configdata.fkConfigline.fkService.fkNode.id %}#}
+{# {% endfor %}#}
+
+{{ configfields }}
+{% for configdata in configdatalines %}
+{{ configdata }}
+{% endfor %}

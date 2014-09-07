@@ -1,0 +1,27 @@
+{% extends 'HegesAppMainBundle:Default:hegesappbase.html.twig' %}
+{% block hegesappbody %}
+<p><h1 class="tabla_datos">Data - LIST</h1></p>
+<table><tr><th class="tabla_datos">Id</th>
+        <th class="tabla_datos">Value</th>
+        <th class="tabla_datos">Creationtime</th>
+        <th class="tabla_datos">Previousvalue</th>
+        <th class="tabla_datos">Updatetime</th>
+        <th colspan="2"></th>
+    </tr>
+{% for entity in entities %}
+    <tr><td class="tabla_datos"><a href="{{ path('data_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+        <td class="tabla_datos">{{ entity.value }}</td>
+        <td class="tabla_datos">{% if entity.creationtime %}{{ entity.creationtime|date('Y-m-d H:i:s') }}{% endif %}</td>
+        <td class="tabla_datos">{{ entity.previousvalue }}</td>
+        <td class="tabla_datos">{% if entity.updatetime %}{{ entity.updatetime|date('Y-m-d H:i:s') }}{% endif %}</td>
+        <td class="tabla_datos"><a href="{{ path('data_show', { 'id': entity.id }) }}">MOSTRAR</a></td>
+        <td class="tabla_datos"><a href="{{ path('data_edit', { 'id': entity.id }) }}">EDITAR</a></td>
+    </tr>
+{% endfor %}
+</table>
+{# <ul><li> #}
+{# <a href="{{ path('data_new', { 'serviceid': serviceid })   }}"> #}
+{# Create a new entry #}
+{# </a> #}
+{# </li></ul> #}
+{% endblock hegesappbody %}

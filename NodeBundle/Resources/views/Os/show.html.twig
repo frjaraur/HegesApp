@@ -1,0 +1,21 @@
+{% extends 'HegesAppMainBundle:Default:hegesappbase.html.twig' %}
+{% block hegesappbody %}
+<p><h1 class="tabla_datos">OS</h1></p>
+<table class="tabla_datos">
+    <tr><th class="tabla_datos">Id</th>
+        <th class="tabla_datos">Name</th>
+        <th class="tabla_datos">Long Name</th></tr>
+    <tr><td class="tabla_datos">{{ entity.id }}</td>
+        <td class="tabla_datos">{{ entity.name }}</td>
+        <td class="tabla_datos">{{ entity.longname }}</td></tr>
+    <!-- <tr><td class="tabla_datos_sin_borde"><form action="{{ path('os') }}"><button type="submit">ATRAS</button></form></td> -->
+    <tr><td class="tabla_datos_sin_borde"><form><input type="button" value="ATRAS" onClick="history.back();"></form></td>
+        <td class="tabla_datos_sin_borde"><form action="{{ path('os_edit', { 'id': entity.id }) }}"><button type="submit">EDITAR</button></form></td>
+        <td class="tabla_datos_sin_borde"><form action="{{ path('os_delete', { 'id': entity.id }) }}" method="post">{{ form_widget(delete_form) }}<button type="submit">BORRAR</button></form></td>
+    </tr>
+</table>
+{# <ul><li><a href="{{ path('os') }}">Back to the list</a></li>
+    <li><a href="{{ path('os_edit', { 'id': entity.id }) }}">Edit</a></li>
+	<li><form action="{{ path('os_delete', { 'id': entity.id }) }}" method="post">{{ form_widget(delete_form) }}<button type="submit">Delete</button></form></li>
+</ul> #}
+{% endblock hegesappbody %}

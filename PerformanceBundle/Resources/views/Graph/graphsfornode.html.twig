@@ -1,0 +1,34 @@
+{% extends 'HegesAppMainBundle:Default:hegesappbase.html.twig' %}
+{% block hegesappbody %}
+<p><h1 class="tabla_datos">Gráficas Disponibles para el nodo {{ node_name }}</h1></p>
+<form action="{{ path('graph') }}"><button type="submit">GRÁFICAS DISPONIBLES</button></form>
+
+<form action="{{ path('graph_main') }}"><button type="submit">ATRÁS</button></form>
+<!-- <form><input type="button" value="ATRÁS" onClick="history.back();"></form>  -->
+<table class="tabla_datos">
+    <tr><th class="tabla_datos">Nombre</th>
+        <th class="tabla_datos">Descripción</th>
+{#         <th class="tabla_datos">URL</th>#}
+{#         <th class="tabla_datos">Icono</th>#}
+    </tr>
+{# {% if defined specific_node_graphs %} #}
+{% for entity in specific_node_graphs %}
+    <tr><td class="tabla_datos">{{ entity.graphname }}</td>
+        <td class="tabla_datos">{{ entity.graphdescription }}</td>
+{#         <td class="tabla_datos">{{ entity.graphurl }}</td>#}
+{#         <td class="tabla_datos">{{ entity.graphicon }}</td>#}
+		<td class="tabla_datos_sin_borde"><form action="{{ entity.graphurl }}" method="post" target="_blank" ><button type="submit">MOSTRAR GRÁFICA</button></form></td>
+    </tr>
+{% endfor %}
+{# {% endif %} #}
+{% for entity in os_node_graphs %}
+    <tr><td class="tabla_datos">{{ entity.graphname }}</td>
+        <td class="tabla_datos">{{ entity.graphdescription }}</td>
+{#         <td class="tabla_datos">{{ entity.graphurl }}</td>#}
+{#         <td class="tabla_datos">{{ entity.graphicon }}</td>#}
+		<td class="tabla_datos_sin_borde"><form action="{{ entity.graphurl }}" method="post" target="_blank" ><button type="submit">MOSTRAR GRÁFICA</button></form></td>
+{# 		<td><a target="_blank" href="{{ path('graph_drawsimplegraph', { 'nodename': node_name , 'graphname': entity.graphname })}}">TETE</a></td>#}
+    </tr>
+{% endfor %}
+</table>
+{% endblock hegesappbody %}

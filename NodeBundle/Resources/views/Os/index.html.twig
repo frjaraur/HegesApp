@@ -1,0 +1,26 @@
+{% extends 'HegesAppMainBundle:Default:hegesappbase.html.twig' %}
+{% block hegesappbody %}
+<p><h1 class="tabla_datos">Operating Systems Available</h1></p>
+<table class="tabla_datos">
+    <tr><td class="tabla_datos_sin_borde" colspan="4"><form action="{{ path('os_new') }}"><button type="submit">NEW OS TYPE</button></form></td><tr>
+    <tr><th class="tabla_datos">Nombre</th>
+        <th class="tabla_datos">Nomeclatura Ampliada</th>
+        <td class="tabla_datos">Tipo de Acceso</td>
+        <th class="tabla_datos_sin_borde" colspan="2"></th>
+    </tr>
+{% for entity in entities %}
+    <tr>{# <td class="tabla_datos"><a href="{{ path('os_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>#}
+        <td class="tabla_datos">{{ entity.name }}</td>
+        <td class="tabla_datos">{{ entity.longname }}</td>
+        <td class="tabla_datos">{{ entity.access }}</td>
+        <td class="tabla_datos_sin_borde"><form action="{{ path('os_show', { 'id': entity.id }) }}"><button type="submit">MOSTRAR</button></form></td>
+        <td class="tabla_datos_sin_borde"><form action="{{ path('os_edit', { 'id': entity.id }) }}"><button type="submit">EDITAR</button></form></td>
+        {# <td class="tabla_datos_sin_borde"> #}
+            {# <ul><li><a href="{{ path('os_show', { 'id': entity.id }) }}">show</a></li> #}
+                {# <li><a href="{{ path('os_edit', { 'id': entity.id }) }}">edit</a></li> #}
+            {# </ul> #}
+        {# </td> #}
+    </tr>
+    {% endfor %}
+</table>
+{% endblock hegesappbody %}

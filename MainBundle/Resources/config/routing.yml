@@ -1,0 +1,3 @@
+HegesAppMainBundle_homepage:
+    pattern:  /
+    defaults: { _controller: HegesAppMainBundle:Default:index }

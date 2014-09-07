@@ -1,0 +1,11 @@
+{% extends 'HegesAppMainBundle:Default:hegesappbase.html.twig' %}
+{% block hegesappbody %}
+<p><h1 class="tabla_datos">Editar configuración de Sistema Operativo</h1></p>
+<form id="form_datos" action="{{ path('os_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>
+{{ form_widget(edit_form) }}
+<table><tr><td class="tabla_datos_sin_borde"><form><button form="form_datos" type="submit">GUARDAR</button></form></td>
+            <td class="tabla_datos_sin_borde"><form action="{{ path('os') }}"><button type="submit">ATRAS</button></form></td>
+            <!--<td class="tabla_datos_sin_borde"><form><input type="button" value="ATRAS" onClick="history.back();"></form></td>-->
+            <td class="tabla_datos_sin_borde"><form action="{{ path('os_delete', { 'id': entity.id }) }}" method="post">{{ form_widget(delete_form) }}<button type="submit"  onclick="return(confirm('No hay marcha atrás, estás seguro de que quieres borrar el Sistema Operativo y todos los nodos asociados a él?'))">BORRAR</button></form></td>
+</tr></table>
+{% endblock hegesappbody %}

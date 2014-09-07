@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="utf-8"><title>Herramientas de Gestión</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+<!--        Le styles //-->
+<!--        <link href="../assets/css/bootstrap.css" rel="stylesheet"> //-->
+    {# {% stylesheets '@HegesAppMainBundle/Resources/public/css/bootstrap.css' %} #}
+    {# <link href="{{ asset_url }}" rel="stylesheet"> #}
+    {# {% endstylesheets %} #}
+<!--        <link href="../assets/css/hegesapp.css" rel="stylesheet"> //-->
+    {% stylesheets '@HegesAppMainBundle/Resources/public/css/hegesapp.css' %}
+    <link href="{{ asset_url }}" rel="stylesheet">
+    {% endstylesheets %}
+<!--        Le HTML5 shim, for IE6-8 support of HTML5 elements //-->
+<!--        '@HegesAppMainBundle/Resources/public/js/bootstrap.js' //-->
+<!--        '@HegesAppMainBundle/Resources/public/js/bootstrap.min.js' //-->
+<!--        JQUERY //-->
+{# 	<script src="{{ asset('js/jquery.js') }}"></script>#}
+{# 	<script src="{{ asset('js/jquery.livesearch.js') }}"></script>#}
+{# 	<script src="{{ asset('js/jquery.tablesorter.js') }}"></script>#}
+{#     <script src="{{ asset('js/jquery-ui.js') }}"></script> #}
+    <script src="http://code.jquery.com/jquery-1.8.2.js"></script>
+    <script src="http://code.jquery.com/ui/1.9.1/jquery-ui.js"></script>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    {% javascripts 
+        '@HegesAppMainBundle/Resources/public/js/jquery.livesearch.js'
+        '@HegesAppMainBundle/Resources/public/js/jquery.tablesorter.js'
+    %}
+{#    '@HegesAppMainBundle/Resources/public/js/jquery.js'
+      '@HegesAppMainBundle/Resources/public/js/jquery-ui.js'	#}
+	<script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+    
+    <link rel="shortcut icon" href="../assets/ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">
+	
+{# 	<link rel="stylesheet" href="http://code.jquery.com/ui/1.9.1/themes/base/jquery-ui.css" />#}
+	
+<!--    <script src="../../public/js/jquery.js" type="text/javascript" charset="utf-8"></script> //-->
+<!--    <script src="../../public/js/jquery.livesearch.js" type="text/javascript" charset="utf-8"></script> //-->
+    <script type="text/javascript" charset="utf-8">
+    $(function() {
+        $( "#startdate" ).datepicker({
+            defaultDate: "+1w",
+            changeMonth: true,
+			numberOfMonths: 1,
+			onClose: function(selectedDate){
+				$("#startdate" ).datepicker("option","minDate",selectedDate);
+				}
+            });
+
+        $( "#enddate" ).datepicker({
+            defaultDate: "+1w",
+            changeMonth: true,
+			numberOfMonths: 1,
+			onClose: function(selectedDate){
+				$("#enddate" ).datepicker("option","maxDate",selectedDate);
+				}
+            });       
+    });
+        
+    (function($) { $(document).ready(function() { $('input[name="q"]').search('#names tr', function(on) {
+                on.all(function(results) {
+                    var size = results ? results.size() : 0
+                    $('#count').text(size + ' results');
+                    });
+                on.reset(function() {
+                    $('#none').hide();
+                    $('#names tr').show();
+                    });
+                on.empty(function() {
+                    $('#none').show();
+                    $('#names tr').hide();
+                    });
+                on.results(function(results) {
+                    $('#none').hide();
+                    $('#names tr').hide();
+                    results.show();
+                    });
+                });
+            });
+        })(jQuery);
+	</script>	
+</head>
+<body class="tabla_datos">
+    <div class="navbar navbar-fixed-top" width="100%">
+        <table width="100%">
+            <tr width="100%">
+		        <td width="150">{% image '@HegesAppMainBundle/Resources/public/img/logo-ono.png' %}
+                    <img src="{{ asset_url }}" width="120">
+                    {% endimage %}</td>
+                <td width="420" class="home_titulo"><a class="brand" href="{{ path('HegesAppMainBundle_homepage') }}"><br><h1 class="home_txt">Herramientas de Gestión</h1></a></td>
+            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                <td text-align="right">
+                    <ul class="nav nav-pills">
+                {% if is_granted("ROLE_ADMIN") %}
+                        <li class="active"><a href="{{ path('nodemain') }}">Nodos</a></li>	
+                        <li class="active"><a href="{{ path('service') }}">Servicios</a></li>
+                        <li class="active"><a href="{{ path('monitor') }}">Monitores</a></li>
+                        <li class="active"><a href="{{ path('graph') }}">Gráficas</a></li>                         
+                        <li class="active"><a href="{{ path('configfile_main') }}">Configuraciones</a></li>
+                        <li class="active"><a href="{{ path('fos_user_security_logout') }}">{{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} ({{ 'layout.logout'|trans({}, 'FOSUserBundle') }})</a></li>
+                        <li>{% image '@HegesAppMainBundle/Resources/public/img/sysadmin.png' %}
+                            <img src="{{ asset_url }}" height="28" width="28"></li>
+                            {% endimage %}
+                {% else %}
+                        <li class="active"><a href="{{ path('fos_user_security_logout') }}">{{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} ({{ 'layout.logout'|trans({}, 'FOSUserBundle') }})</a></li>
+                        <li>{% image '@HegesAppMainBundle/Resources/public/img/user.png' %}
+                            <img src="{{ asset_url }}" height="28" width="28"></li>
+                            {% endimage %}
+                {% endif %}
+                    </ul>
+                </td>
+            {% endif %}
+            </tr>
+        </table>
+    </div>
+    <div name="fos_user_content">
+        {% block fos_user_content %}
+        {% endblock fos_user_content %}
+    </div>   
+    <div class="navbar-fixed-bottom" width="100%">
+        <table width="100%">
+            <tr width="100%">
+        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                <td align="left"><a class="ico_home_img" href="{{ path('HegesAppMainBundle_homepage') }}">
+                {% image '@HegesAppMainBundle/Resources/public/img/ico-home.png' %}
+				<img class="ico_home_img" src="{{ asset_url }}" height="28">
+				{% endimage %}</a></td>
+        {% endif %}
+        {% for key, message in app.session.getFlashes() %}
+        {% if key == 'notice' %}
+                <td class="flash_notice"><b>{{ key|upper }}:</b> {{ message|trans({}, 'FOSUserBundle') }}</td>
+        {% else %}
+            {% if key == 'error' %}
+                <td class="flash_error"><b>{{ key|upper }}:</b> {{ message|trans({}, 'FOSUserBundle') }}</td>
+            {% else %}
+                <td class="flash_ok"><b>{{ key|upper }}:</b> {{ message|trans({}, 'FOSUserBundle') }}</td>
+            {% endif %}                     
+        {% endif %}
+		{% endfor %}
+			    <td align="right">{% image '@HegesAppMainBundle/Resources/public/img/symfony2.png' %}<img src="{{ asset_url }}" height="26">{% endimage %}</td>
+            </tr>
+        </table>
+    </div>
+    {% block hegesappbody %}
+    {% endblock hegesappbody %}
+</body></html>

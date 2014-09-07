@@ -1,0 +1,3 @@
+HegesAppManagementBundle_server:
+    resource: "@HegesAppManagementBundle/Resources/config/routing/server.yml"
+    prefix:   /server

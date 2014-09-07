@@ -1,0 +1,28 @@
+{% extends 'HegesAppMainBundle:Default:hegesappbase.html.twig' %}
+{% block hegesappbody %}
+<p><h1 class="tabla_datos">Alarmas por nodos</h1></p>
+<p>BUSCAR <input type="text" name="q" value=""> <span id="count"></span></p>
+<p id="none" style="display:none">No hay coincidencias para tu busqueda!</p>
+<ul class="tabla_datos">
+    <li class="tabla_datos"><table class="tabla_datos"><tr>
+        <th width="150" class="tabla_datos">Nombre Nodo</th>
+        <th width="150" class="tabla_datos">Descripcion</th>
+
+        <td width="350" class="tabla_datos_sin_borde"></td>
+    </tr></table></li>
+</ul>
+<ul id="names" class="tabla_datos">
+    {% for entity in entities %}
+    <li class="tabla_datos"><table class="tabla_datos"><tr>
+        <td width="150" class="tabla_datos">{{ entity.name }}</td>
+        <td width="150" class="tabla_datos">{{ entity.description }}</td>
+
+        <td class="tabla_datos_sin_borde"><form action="{{ path('alarm_ovonodeact', { 'nodename': entity.name }) }}" method="post"><button type="submit">ALARMAS ACTIVAS</button></form></td>
+        <td class="tabla_datos_sin_borde"><form action="{{ path('alarm_ovonodehist', { 'nodename': entity.name }) }}" method="post"><button type="submit">ALARMAS HISTÓRICAS</button></form></td>        
+        <td class="tabla_datos_sin_borde"></td>
+    </tr></table></li>
+    {# <li>{{ entity.name }} #}
+    {% endfor %}
+</ul>
+<form><input type="button" value="ATRAS" onClick="history.back();"></form>
+{% endblock hegesappbody %}

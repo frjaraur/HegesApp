@@ -1,0 +1,136 @@
+{% extends 'HegesAppMainBundle:Default:hegesappbase.html.twig' %}
+{% block hegesappbody %}
+<p><h1 class="tabla_datos">Monitorización y Configuraciones</h1></p>
+{#<h1 class="tabla_datos">STEP {{ step }}</h1>#}
+{% if nodename is defined %}  
+<p><h2 class="tabla_datos">Nodo {{ nodename }}</h2></p>
+
+{%endif%}
+
+
+
+
+
+{% if step == 0 %}
+<p><h2 class="tabla_datos">ERROR</h2></p>
+{% elseif step == 1 %}
+<!-- PRIMERA EJECUCION, SE SELECCIONA UN NODO -->
+<p><h2 class="tabla_datos">Seleccionar un Nodo</h2></p>
+<p>BUSCAR <input type="text" name="q" value=""> <span id="count"></span></p>
+<p id="none" style="display:none">No hay coincidencias para tu busqueda!</p>
+    <ul class="tabla_datos">
+        <li class="tabla_datos"><table class="tabla_datos"><tr>
+            <th width="150" class="tabla_datos">Nodo</th>
+            <th width="150" class="tabla_datos">Sistema Operativo</th>
+            <th width="150" class="tabla_datos">Tipo</th>
+            <td width="200" class="tabla_datos_sin_borde"> </td>
+        </tr></table></li>
+	</ul>
+    <ul id="names" class="tabla_datos">
+    {% if entities|length > 1 %}
+        {% for entities in entities %}
+        <li class="tabla_datos"><table class="tabla_datos"><tr>
+            <td width="150" class="tabla_datos">{{ entities.name }}</td>
+            <td width="150" class="tabla_datos">{{ entities.fkOS }}</td>
+            <td width="150" class="tabla_datos">{{ entities.fkNodetype }}</td>
+            <td width="200" class="tabla_datos_sin_borde"><form action="{{ path('node_show', { 'id': entities.id }) }}"><button type="submit">MOSTRAR</button></form></td>
+            <td width="200" class="tabla_datos_sin_borde"><form action="{{ path('configfile_nodeselect', { 'nodeid': entities.id },{'nodename': entities.name}) }}"><button type="submit">SELECCIONAR</button></form></td>
+        </tr></table></li>
+        {# {{ entities.id }}#}
+        {% endfor %}
+    {% endif %}
+    </ul>
+{% elseif step == 2 %}
+<!-- SEGUNDA EJECUCION, APARECE EL NODO SELECCIONADO Y SE DEBE ELEGIR UN SERVICIO //-->
+<table><tr><th class="tabla_datos">Nodo</th>
+        <th class="tabla_datos">Nombre del Servicio</th>
+        <th class="tabla_datos">Descripción</th>
+        <th class="tabla_datos">Fichero</th></tr>    
+    {% if entities|length >= 1 %}
+        {% for entity in entities %}
+    <tr><td class="tabla_datos">{{ entity.fknode.name }}</td>
+        <td class="tabla_datos">{{ entity.name }}</td>
+        <td class="tabla_datos">{{ entity.description }}</td>
+        <td class="tabla_datos">{{ entity.configfilename }}</td>
+        <td class="tabla_datos_sin_borde"><form action="{{ path('configfile_serviceselect', {'serviceid': entity.id},{'monitorid': entity.fkMonitor.id} ) }}"><button type="submit">SELECCIONAR</button></form></td></tr>
+        {% endfor %}
+    {% else %}
+    <tr><td class="tabla_datos">{{ entities.name }} {{  entities.id }}</td>
+        <td class="tabla_datos_sin_borde"><form action="{{ path('configfile_serviceselect', { 'nodeid': entities.id }) }}"><button type="submit">SELECCIONAR</button></form></td></tr>
+    {% endif %}
+    {# <tr><td class="tabla_datos">{{ entities.name }} {{  entities.id }}</td> #}
+	    {# <td class="tabla_datos_sin_borde"><form action="{{ path('configline_serviceselect', { 'nodeid': entities.id }) }}"><button type="submit">MOSTRAR</button></form></td></tr></tr> #}
+    <!-- <tr><td class="tabla_datos_sin_borde"><form action="{{ path('configfile') }}" method="post"><button type="submit">ATRAS</button></form></td></tr> -->
+    <tr><td class="tabla_datos_sin_borde"><form action="{{path('configfile') }}" method="post"><button type="submit">ATRAS</button></form></td></tr>
+    <tr><td class="tabla_datos_sin_borde"><form action="{{ path('configfile_dumpmultiplefiles',{ 'nodeid': nodeid }) }}" method="post"><button type="submit">Volcar ficheros en el repositorio central</button></form></td></tr>
+    <tr><td class="tabla_datos_sin_borde"><form action="{{ path('configfile_applymultiplefiles',{ 'nodeid': nodeid }) }}" method="post"><button type="submit" onclick="return(confirm('No hay marcha atrás, aplicar los ficheros de configuración?'))">Aplicar ficheros en el nodo</button></form></td></tr>
+
+
+</table>
+{% elseif step == 3 %}
+    {% if serviceid is defined %}  
+	
+{# <p><h2 class="tabla_datos">LINETYPEID [ {{ linetypeid }} ]</h2></p> #}
+{# <p><h2 class="tabla_datos">TERCERA EJECUCION</h2></p> #}
+{# <p>{{ configlinetype.name }} {{ configlinetype.id }} {{ configlinetype.fieldsnumber }} #}
+        <table><tr>
+                {% for configfield in configfields %}
+                {# <th class="tabla_datos">{{ configfield.id }} {{ configfield.fieldorder }} {{ configfield.fieldname }} {{ configfield.fielddesc }}</th> #}
+                <th class="tabla_datos"><a class="tabla_datos" href="#" title="{{ configfield.fielddesc }}">{% filter upper %}{{ configfield.fieldname }}{% endfilter %}</a></th>
+                {% endfor %}
+            </tr>
+            <tr>
+                {% set lastlineid=0 %}
+                {# {% set nodeid = 0 %} #}
+                {% for configdata in configdataentries %}
+                    {% if lastlineid != configdata.fkConfigline.id and lastlineid!= 0 %}
+                {% if is_granted("ROLE_READONLY") %}
+                <td></td>
+                {% else %}
+                <td class="tabla_datos_sin_borde"><form action="{{ path('configfile_editconfigfile', { 'lineid': lastlineid }) }}"><button type="submit">EDITAR</button></form></td>
+                {% endif %}
+            </tr>
+            <tr><td class="tabla_datos">{{ configdata.value }}</td>
+                    {% else %}
+                <td class="tabla_datos">{{ configdata.value }}</td>
+                    {% endif %}
+                    {% set lastlineid=configdata.fkConfigline.id %}
+                    {% set nodeid = configdata.fkConfigline.fkService.fkNode.id %}
+                {% endfor %}
+                {% if is_granted("ROLE_READONLY") %}
+                <td></td>
+                {% else %}
+                <td class="tabla_datos_sin_borde"><form action="{{ path('configfile_editconfigfile', { 'lineid': lastlineid }) }}"><button type="submit">EDITAR</button></form></td>
+                {% endif %}
+            </tr>
+        </table>
+				<table><tr><td class="tabla_datos_sin_borde"><form action="{{ path('configfile_nodeselect', { 'nodeid': nodeid }) }}"><button type="submit">ATRAS</button></form></td>
+                
+				{% if is_granted("ROLE_READONLY") %}
+                    <td></td>
+                {% else %}
+                    <td class="tabla_datos_sin_borde"><form action="{{ path('configfile_newconfigfiledata', { 'serviceid': serviceid }) }}"><button type="submit">AÑADIR</button></form></td>
+                {% endif %}
+                    <td class="tabla_datos_sin_borde"><form action="{{ path('configfile_export2csv', {'serviceid': serviceid}) }}" method="post" target="_blank" id="FormularioExportacion">
+                      <button type="submit">Exportar a CSV</button></form></td>
+                    {% if is_granted("ROLE_ADMIN") %}
+                        <td class="tabla_datos_sin_borde"><form action="{{ path('configfile_dumpfile', {'serviceid': serviceid}) }}" method="post" id="DumpFile">
+                        <button type="submit">Volcar fichero en el repositorio central</button></form></td>
+                        <td class="tabla_datos_sin_borde"><form action="{{ path('configfile_applyfile', {'serviceid': serviceid}) }}" method="post" id="ApplyFile">
+                         <button type="submit" onclick="return(confirm('No hay marcha atrás, aplicar la configuración?'))">Aplicar fichero en el nodo</button></form></td></tr>
+
+                    {% endif %}
+            </tr>
+        </table>
+
+
+
+
+{% endif %}
+{% elseif step == 4 %} 			
+<p><h2 class="tabla_datos">Data Created</h2></p>
+ <table><tr><td class="tabla_datos_sin_borde"><form action="{{ path('configfile_serviceselect', { 'serviceid': serviceid }) }}"><button type="submit">OK</button></form></td>
+    </tr>
+</table>
+{% endif %}
+{% endblock hegesappbody %}

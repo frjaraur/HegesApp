@@ -1,0 +1,4 @@
+HegesAppMonitorBundle_monitor:
+    resource: "@HegesAppMonitorBundle/Resources/config/routing/monitor.yml"
+    prefix:   /monitor
+

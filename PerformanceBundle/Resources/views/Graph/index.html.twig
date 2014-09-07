@@ -1,0 +1,27 @@
+{% extends 'HegesAppMainBundle:Default:hegesappbase.html.twig' %}
+{% block hegesappbody %}
+<p><h1 class="tabla_datos">GRÁFICAS DISPONIBLES</h1></p>
+{% if is_granted("ROLE_ADMIN") %}
+<form action="{{ path('graph_new') }}"><button type="submit">CREAR GRÁFICA</button></form>
+{% endif %}
+<table class="tabla_datos">
+    <tr><th class="tabla_datos">Nombre</th>
+        <th class="tabla_datos">Descripción</th>
+        <th class="tabla_datos">URL</th>
+        <th class="tabla_datos">Icono</th>
+        <th class="tabla_datos">Asignación a Nodo</th>
+        <th class="tabla_datos">Asignación a Sistema Operativo</th>
+    </tr>
+{% for entity in entities %}
+    <tr><td class="tabla_datos">{{ entity.graphname }}</td>
+        <td class="tabla_datos">{{ entity.graphdescription }}</td>
+        <td class="tabla_datos">{{ entity.graphurl }}</td>
+        <td class="tabla_datos">{{ entity.graphicon }}</td>
+        <td class="tabla_datos">{{ entity.fknodeid }}</td>
+        <td class="tabla_datos">{{ entity.fkosid }}</td>
+        <td class="tabla_datos_sin_borde"><form action="{{ path('graph_show', { 'id': entity.id }) }}"><button type="submit">MOSTRAR</button></form></td>
+        <td class="tabla_datos_sin_borde"><form action="{{ path('graph_edit', { 'id': entity.id }) }}"><button type="submit">EDITAR/BORRAR</button></form></td>
+    </tr>
+{% endfor %}
+</table>
+{% endblock hegesappbody %}

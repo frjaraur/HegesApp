@@ -1,0 +1,31 @@
+#Rendimiento CPU Linux
+--title
+Uso de CPU y Memoria en el nodo NODENAME 
+--watermark
+ONO - Produccion de Sistemas - Herramientas de Gestion
+--upper-limit
+100
+--lower-limit
+0
+--width
+800
+--height
+400
+--vertical-label
+Porcentaje de Uso / Número de procesos encolados
+--x-grid 
+HOUR:1:HOUR:6:HOUR:2:1:%H:00
+--font
+DEFAULT:7:Arial
+DEF:var1=/opt/nagios/var/perfdata/NODENAME/GBL_COLLECT_UNIX.rrd:1:AVERAGE
+DEF:var2=/opt/nagios/var/perfdata/NODENAME/GBL_COLLECT_UNIX.rrd:2:AVERAGE
+DEF:var3=/opt/nagios/var/perfdata/NODENAME/GBL_COLLECT_UNIX.rrd:3:AVERAGE
+DEF:var4=/opt/nagios/var/perfdata/NODENAME/GBL_COLLECT_UNIX.rrd:5:AVERAGE
+DEF:var5=/opt/nagios/var/perfdata/NODENAME/GBL_COLLECT_UNIX.rrd:6:AVERAGE
+DEF:var6=/opt/nagios/var/perfdata/NODENAME/GBL_COLLECT_UNIX.rrd:7:AVERAGE
+LINE1:var1#000000: CPU Usuario
+LINE1:var2#00ff00: CPU Sistema
+LINE2:var3#ff0000: Uso CPU Total
+LINE1:var4#ff00ff: CPU en espera
+LINE1:var5#6e6e6e: Cola de Ejecución
+LINE1:var6#013adf: Uso de Memoria

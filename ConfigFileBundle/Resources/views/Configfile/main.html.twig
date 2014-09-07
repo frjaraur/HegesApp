@@ -1,0 +1,19 @@
+{% extends 'HegesAppMainBundle:Default:hegesappbase.html.twig' %}
+{% block hegesappbody %}
+
+<p><h1 class="tabla_datos">Opciones de configuración:</h1></p>
+
+<table><tr><td class="tabla_datos_sin_borde"><form action="{{ path('configlinetype') }}"><button type="submit">CREAR/MODIFICAR TIPOS DE LINEAS DE CONFIGURACION</button></form></td></tr>
+    <tr><td class="tabla_datos_sin_borde"><form action="{{ path('configfield') }}"><button type="submit">CREAR/MODIFICAR TIPOS DE CAMPOS DE LAS LINEAS DE LOS FICHEROS DE CONFIGURACION</button></form></td></tr>
+    <tr><td class="tabla_datos_sin_borde"><form action="{{ path('configfile') }}"><button type="submit">CREAR/MODIFICAR FICHEROS DE CONFIGURACION POR NODO</button></form></td></tr>
+</table>
+
+
+{# <p><h1 class="tabla_datos">Opciones de volcado de datos:</h1></p>#}
+
+{# <table>#}
+{#     <tr><td class="tabla_datos_sin_borde"><form action="{{ path('configfile_dumpfile_main') }}"><button type="submit">VOLCAR / DISTRIBUIR FICHEROS DE CONFIGURACION</button></form></td></tr>#}
+{# </table>#}
+
+
+{% endblock hegesappbody %}

@@ -1,0 +1,13 @@
+{% extends 'HegesAppMainBundle:Default:hegesappbase.html.twig' %}
+{% block hegesappbody %}
+<p><h1 class="tabla_datos">Tipo Nodo - EDITAR</h1></p>
+<form id="form_datos" action="{{ path('nodetype_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>
+    {{ form_widget(edit_form) }}</form>
+<table><tr><td class="tabla_datos_sin_borde"><form><button form="form_datos" type="submit">GUARDAR</button></form></td>
+            <!-- <td class="tabla_datos_sin_borde"><form action="{{ path('nodetype') }}"><button type="submit">ATRAS</button></form></td> -->
+            <td class="tabla_datos_sin_borde"><form><input type="button" value="ATRAS" onClick="history.back();"></form></td>
+            <td class="tabla_datos_sin_borde"><form action="{{ path('nodetype_delete', { 'id': entity.id }) }}" method="post">
+                {{ form_widget(delete_form) }}
+                <button type="submit"  onclick="return(confirm('No hay marcha atrás, estás seguro de que quieres borrar el tipo y todos sus nodos asociados?'))">BORRAR</button></form></td>
+</tr></table>
+{% endblock hegesappbody %}

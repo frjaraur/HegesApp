@@ -1,0 +1,15 @@
+{% extends 'HegesAppMainBundle:Default:hegesappbase.html.twig' %}
+{% block hegesappbody %}
+<p><h1>Creacion de un DATO</h1></p>
+{% if serviceid is defined %}
+<p><h2>Service Id: {{ serviceid }}</h2></p>
+<form action="{{ path('data_create', { 'serviceid': serviceid }) }}" method="post" {{ form_enctype(form) }}>
+    {{ form_widget(form) }}
+    <button type="submit">Create</button></form>
+{% else %}
+<form action="{{ path('data_create') }}" method="post" {{ form_enctype(form) }}>
+    {{ form_widget(form) }}
+    <button type="submit">CREAR</button></form>
+{% endif %}
+{# <ul><li><a href="{{ path('data') }}">Back to the list</a></li></ul> #}
+{% endblock hegesappbody %}

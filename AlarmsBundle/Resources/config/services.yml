@@ -1,0 +1,7 @@
+parameters:
+#    heges_app_alarms.example.class: HegesApp\AlarmsBundle\Example
+
+services:
+#    heges_app_alarms.example:
+#        class: %heges_app_alarms.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

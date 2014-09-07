@@ -1,0 +1,4 @@
+HegesAppServiceBundle_service:
+    resource: "@HegesAppServiceBundle/Resources/config/routing/service.yml"
+    prefix:   /service
+

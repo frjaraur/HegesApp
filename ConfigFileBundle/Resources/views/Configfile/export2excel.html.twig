@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+{# 	<meta charset="utf-8"><title>Portal de Herramientas de Gestión</title>#}
+{#     <meta name="Content-type" content="Content-type: application/vnd.ms-excel; name='excel'">#}
+{#     <meta name="Content-Disposition" content="filename=ficheroExcel.xls">#}
+{#     <meta name="Pragma" content="no-cache">#}
+{# 	<meta name="Expires" content="0">#}
+</head>
+<body><table>
+        <tr>
+        {% for configfield in configfields %}
+            <th class="tabla_datos">{{ configfield.fieldname }}</a></th>
+        {% endfor %}
+        </tr>
+        <tr>
+        {% set lastlineid=0 %}
+        {% set nodeid = 0 %}   
+        {% for configdata in configdataentries %}
+            {% if lastlineid != configdata.fkConfigline.id and lastlineid!= 0 %}
+            <td class="tabla_datos_sin_borde">
+        </tr>
+        <tr><td class="tabla_datos">{{ configdata.value }}</td>
+            {% else %}
+            <td class="tabla_datos">{{ configdata.value }}</td>
+            {% endif %}
+            {% set lastlineid=configdata.fkConfigline.id %}
+            {% set nodeid = configdata.fkConfigline.fkService.fkNode.id %}
+        {% endfor %}
+        </tr>
+    </table>
+</body></html>

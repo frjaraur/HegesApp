@@ -1,0 +1,34 @@
+server:
+    pattern:  /
+    defaults: { _controller: "HegesAppManagementBundle:Server:index" }
+
+server_main:
+    pattern:  /main
+    defaults: { _controller: "HegesAppManagementBundle:Server:main" }
+
+server_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "HegesAppManagementBundle:Server:show" }
+
+server_new:
+    pattern:  /admin/new
+    defaults: { _controller: "HegesAppManagementBundle:Server:new" }
+
+server_create:
+    pattern:  /admin/create
+    defaults: { _controller: "HegesAppManagementBundle:Server:create" }
+    requirements: { _method: post }
+
+server_edit:
+    pattern:  /admin/{id}/edit
+    defaults: { _controller: "HegesAppManagementBundle:Server:edit" }
+
+server_update:
+    pattern:  /admin/{id}/update
+    defaults: { _controller: "HegesAppManagementBundle:Server:update" }
+    requirements: { _method: post }
+
+server_delete:
+    pattern:  /admin/{id}/delete
+    defaults: { _controller: "HegesAppManagementBundle:Server:delete" }
+    requirements: { _method: post }

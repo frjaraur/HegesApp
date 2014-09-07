@@ -1,0 +1,30 @@
+configfield:
+    pattern:  /
+    defaults: { _controller: "HegesAppConfigFileBundle:Configfield:index" }
+
+configfield_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "HegesAppConfigFileBundle:Configfield:show" }
+
+configfield_new:
+    pattern:  /admin/new
+    defaults: { _controller: "HegesAppConfigFileBundle:Configfield:new" }
+
+configfield_create:
+    pattern:  /admin/create
+    defaults: { _controller: "HegesAppConfigFileBundle:Configfield:create" }
+    requirements: { _method: post }
+
+configfield_edit:
+    pattern:  /admin/{id}/edit
+    defaults: { _controller: "HegesAppConfigFileBundle:Configfield:edit" }
+
+configfield_update:
+    pattern:  /admin/{id}/update
+    defaults: { _controller: "HegesAppConfigFileBundle:Configfield:update" }
+    requirements: { _method: post }
+
+configfield_delete:
+    pattern:  /admin/{id}/delete
+    defaults: { _controller: "HegesAppConfigFileBundle:Configfield:delete" }
+    requirements: { _method: post }

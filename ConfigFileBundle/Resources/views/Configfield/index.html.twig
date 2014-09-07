@@ -1,0 +1,28 @@
+{% extends 'HegesAppMainBundle:Default:hegesappbase.html.twig' %}
+{% block hegesappbody %}
+<p><h1 class="tabla_datos">Campos configurados en los distintos tipos de línea</h1></p>
+<p>BUSCAR <input type="text" name="q" value=""> <span id="count"></span></p>
+<p id="none" style="display:none">No hay coincidencias para tu busqueda!</p>
+<form action="{{ path('configfield_new') }}"><button type="submit">CREAR NUEVO</button></form>
+<ul class="tabla_datos">
+    <li class="tabla_datos"><table class="tabla_datos"><tr>
+        <th width="250" class="tabla_datos">Monitor</th>
+        <th width="250" class="tabla_datos">Tipo Linea</th>
+        <th width="100" class="tabla_datos">Orden Campo</th>
+        <th width="200" class="tabla_datos">Nombre Campo</th>
+        <td width="200" class="tabla_datos_sin_borde"> </td>
+    </tr></table></li>
+</ul>
+<ul id="names" class="tabla_datos">            
+    {% for entity in entities %}
+    <li class="tabla_datos"><table class="tabla_datos"><tr>
+        <td width="250" class="tabla_datos">{{ entity.fkconfiglinetype.fkMonitor }}</td>
+        <td width="250" class="tabla_datos">{{ entity.fkconfiglinetype }}</td>
+        <td width="100" class="tabla_datos">{{ entity.fieldorder }}</td>
+        <td width="200" class="tabla_datos">{{ entity.fieldname }}</td>
+        <td width="100" class="tabla_datos_sin_borde"><form action="{{ path('configfield_show', { 'id': entity.id }) }}"><button type="submit">MOSTRAR</button></form></td>
+        <td width="100" class="tabla_datos_sin_borde"><form action="{{ path('configfield_edit', { 'id': entity.id }) }}"><button type="submit">EDITAR</button></form></td>
+    </tr></table></li>
+    {% endfor %}
+</ul>
+{% endblock hegesappbody %}

@@ -1,0 +1,23 @@
+{% extends 'HegesAppMainBundle:Default:hegesappbase.html.twig' %}
+{% block hegesappbody %}
+<p><h1 class="tabla_datos">CAMPO DE FICHERO DE CONFIGURACION</h1></p>
+<table><tr><th class="tabla_datos">Id</th>
+            <th class="tabla_datos">Tipo de Linea</th>
+            <th class="tabla_datos">Orden del Campo</th>
+            <th class="tabla_datos">Nombre del Campo</th>
+            <th class="tabla_datos">Descripcion del Campo</th>
+        </tr>            
+        <tr><td class="tabla_datos">{{ entity.id }}</td>
+            <td class="tabla_datos">{{ entity.fkconfiglinetype }}</td>
+            <td class="tabla_datos">{{ entity.fieldorder }}</td>
+            <td class="tabla_datos">{{ entity.fieldname }}</td>
+            <td class="tabla_datos">{{ entity.fielddesc }}</td>
+        </tr>  
+        <!-- <tr><td class="tabla_datos_sin_borde"><form action="{{ path('configfield') }}"><button type="submit">ATRAS</button></form></td> -->
+        <tr><td class="tabla_datos_sin_borde"><form><input type="button" value="ATRAS" onClick="history.back();"></form></td>
+            <td class="tabla_datos_sin_borde"><form action="{{ path('configfield_edit', { 'id': entity.id }) }}"><button type="submit">EDITAR</button></form></td>
+            <td class="tabla_datos_sin_borde"><form action="{{ path('configfield_delete', { 'id': entity.id }) }}" method="post">{{ form_widget(delete_form) }}<button type="submit">BORRAR</button></form></td>
+			<td class="tabla_datos_sin_borde"><form action="{{ path('configfield_new') }}"><button type="submit">NUEVO</button></form></td>
+        </tr>
+</table>
+{% endblock hegesappbody %}

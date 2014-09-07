@@ -1,0 +1,28 @@
+{% extends 'HegesAppMainBundle:Default:hegesappbase.html.twig' %}
+{% block hegesappbody %}
+<p><h1 class="tabla_datos">Monitores Disponibles</h1></p>
+<form action="{{ path('monitor_new') }}"><button type="submit">NEW MONITOR</button></form>
+<table><tr><th class="tabla_datos">Nombre</th>
+        <th class="tabla_datos">Ejecutable/Script</th>
+        <th class="tabla_datos">Descripción</th>
+        {# <th class="tabla_datos">Lastversion</th> #}
+        {# <th class="tabla_datos">Actions</th> #}
+    </tr>
+    {% for entity in entities %}
+    <tr>{# <td><a href="{{ path('monitor_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>#}
+        <td class="tabla_datos">{{ entity.name }}</td>
+        <td class="tabla_datos">{{ entity.execname }}</td>
+        {# <td class="tabla_datos">{{ entity.params }}</td> #}
+        <td class="tabla_datos">{{ entity.description }}</td>
+        {# <td class="tabla_datos">{{ entity.lastversion }}</td> #}
+        <td class="tabla_datos_sin_borde"><form action="{{ path('monitor_show', { 'id': entity.id }) }}"><button type="submit">MOSTRAR</button></form></td>
+        <td class="tabla_datos_sin_borde"><form action="{{ path('monitor_edit', { 'id': entity.id }) }}"><button type="submit">EDITAR / BORRAR</button></form></td>
+        {# <td class="tabla_datos_sin_borde"><form action="{{ path('monitor_edit', { 'id': entity.id }) }}"><button type="submit">EDITAR / BORRAR</button></form></td> #}
+    </tr>
+    {# <ul> #}
+        {# <li><a class="tabla_datos" href="{{ path('monitor_show', { 'id': entity.id }) }}">show</a></li> #}
+        {# <li><a class="tabla_datos" href="{{ path('monitor_edit', { 'id': entity.id }) }}">edit</a></li> #}
+    {# </ul> #}
+    {% endfor %}
+</table>
+{% endblock hegesappbody %}

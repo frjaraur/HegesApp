@@ -1,0 +1,23 @@
+{% extends 'HegesAppMainBundle:Default:hegesappbase.html.twig' %}
+{% block hegesappbody %}
+<p><h1 class="tabla_datos">NODE TYPES</h1></p>
+<form action="{{ path('nodetype_new') }}"><button type="submit">NEW NODETYPE</button></form>
+<table><tr><th class="tabla_datos">Name</th>
+            <th class="tabla_datos">Description</th>
+            <th colspan="2"></th>
+        </tr>
+    {% for entity in entities %}
+        <tr>{# <td class="tabla_datos"><a class="tabla_datos" href="{{ path('nodetype_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td> #}
+            <td class="tabla_datos">{{ entity.name }}</td>
+            <td class="tabla_datos">{{ entity.description }}</td>
+            {# <td class="tabla_datos_sin_borde">
+                 <ul><li><a class="tabla_datos" href="{{ path('nodetype_show', { 'id': entity.id }) }}">show</a></li>
+                    <li><a class="tabla_datos" href="{{ path('nodetype_edit', { 'id': entity.id }) }}">edit</a></li>
+                </ul>
+            </td> #}
+            <td class="tabla_datos_sin_borde"><form action="{{ path('nodetype_show', { 'id': entity.id }) }}"><button type="submit">MOSTRAR</button></form></td>
+            <td class="tabla_datos_sin_borde"><form action="{{ path('nodetype_edit', { 'id': entity.id }) }}"><button type="submit">EDITAR</button></form></td>
+        </tr>
+    {% endfor %}
+</table>
+{% endblock hegesappbody %}

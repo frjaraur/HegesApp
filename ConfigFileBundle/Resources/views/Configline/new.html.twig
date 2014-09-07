@@ -1,0 +1,9 @@
+<p><h1 class="tabla_datos">Config Line - CREAR</h1></p>
+<table><tr><td class="tabla_datos_sin_borde"><form action="{{ path('configline_create') }}" method="post" {{ form_enctype(form) }}>
+            {{ form_rest(form.Data.get('prototype')).value}}
+            {{ form_rest(form.Data.get('prototype'))}}
+            {{ form_rest(form)}}
+            <button type="submit">CREAR</button></form></td>
+        <!-- <td class="tabla_datos_sin_borde"><form action="{{ path('configline') }}"><button type="submit">ATRAS</button></form></td> -->
+        <td class="tabla_datos_sin_borde"><form><input type="button" value="ATRAS" onClick="history.back();"></form></form></td>
+</tr></table>

@@ -1,0 +1,27 @@
+#Rendimiento Global de Nodos Windows
+--title
+Rendimiento del nodo NODENAME 
+--watermark
+ONO - Produccion de Sistemas - Herramientas de Gestion
+--upper-limit
+100
+--lower-limit
+0
+--width
+800
+--height
+400
+--vertical-label
+Porcentaje de Uso
+--x-grid
+MINUTE:30:HOUR:1:MINUTE:30:0%X
+--font
+DEFAULT:1:Arial
+DEF:var1=/opt/nagios/var/perfdata/NODENAME/nag_mon_common_osperf.rrd:1:AVERAGE
+DEF:var2=/opt/nagios/var/perfdata/NODENAME/nag_mon_common_osperf.rrd:2:AVERAGE
+DEF:var3=/opt/nagios/var/perfdata/NODENAME/nag_mon_common_osperf.rrd:3:AVERAGE
+DEF:var4=/opt/nagios/var/perfdata/NODENAME/nag_mon_common_osperf.rrd:4:AVERAGE
+LINE1:var1#000000:Uso CPU
+LINE1:var2#00ff00:Uso Memoria Física
+LINE1:var3#ff0000:Uso Memoria Virtual
+LINE1:var4#ff00ff:Uso Disco

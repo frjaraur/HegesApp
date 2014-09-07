@@ -1,0 +1,25 @@
+--watermark
+Herramientas de Gestion - Produccion de Sistemas
+--title
+Grafica por defecto
+--width
+800
+--height
+600
+--x-grid
+HOUR:12:DAY:1:DAY:1:86400:%A
+DEF:crmtux01=/opt/nagios/var/perfdata/crmtux01/nag_mon_tux_sessions.rrd:3:AVERAGE
+DEF:crmtux02=/opt/nagios/var/perfdata/crmtux02/nag_mon_tux_sessions.rrd:3:AVERAGE
+DEF:crmtux03=/opt/nagios/var/perfdata/crmtux03/nag_mon_tux_sessions.rrd:3:AVERAGE
+DEF:crmtux04=/opt/nagios/var/perfdata/crmtux04/nag_mon_tux_sessions.rrd:3:AVERAGE
+DEF:crmtux05=/opt/nagios/var/perfdata/crmtux05/nag_mon_tux_sessions.rrd:3:AVERAGE
+CDEF:tmpcrmtux01=crmtux01,UN,0,crmtux01,IF
+CDEF:tmpcrmtux02=crmtux02,UN,0,crmtux02,IF
+CDEF:tmpcrmtux03=crmtux03,UN,0,crmtux03,IF
+CDEF:tmpcrmtux04=crmtux04,UN,0,crmtux04,IF
+CDEF:tmpcrmtux05=crmtux05,UN,0,crmtux05,IF
+CDEF:suma=tmpcrmtux01,tmpcrmtux02,+,tmpcrmtux03,+,tmpcrmtux04,+,tmpcrmtux05,+
+AREA:suma#0000ff: Total Sesiones Tuxedo
+GPRINT:suma:LAST: %3.4lg Last
+GPRINT:suma:MAX: %3.4lg Max
+GPRINT:suma:AVERAGE: %3.4lg Media

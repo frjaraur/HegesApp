@@ -1,0 +1,49 @@
+{% extends 'HegesAppMainBundle:Default:hegesappbase.html.twig' %}
+{% block hegesappbody %}
+<p><h1 class="tabla_datos">Service</h1></p>
+<table class="tabla_datos">
+    <tr><th class="tabla_datos">Id</th>
+        <th class="tabla_datos">Service Name</th>
+        <th class="tabla_datos">Service Description</th>
+        <th class="tabla_datos">Service TEST</th>
+        <th class="tabla_datos">Configuration File Name</th>
+        <th class="tabla_datos">Monitor</th>
+        <th class="tabla_datos">Node</th>
+    </tr>
+    <tr><td class="tabla_datos">{{ entity.id }}</td>
+        <td class="tabla_datos">{{ entity.name }}</td>
+        <td class="tabla_datos">{{ entity.description }}</td>
+        <td class="tabla_datos">{{ entity.servicetest }}</td>
+        <td class="tabla_datos">{{ entity.configfilename }}</td>
+        <td class="tabla_datos">{{ entity.fkMonitor }}</td>
+        <td class="tabla_datos">{{ entity.fkNode }}</td>
+    </tr>
+{# <ul class="tabla_datos"> #}
+{#     <li class="tabla_datos"><a href="{{ path('service') }}">ATRAS</a></li> #}
+{#     <li class="tabla_datos"><a href="{{ path('service_edit', { 'id': entity.id }) }}">EDITAR</a></li> #}
+{#     <li class="tabla_datos"><form action="{{ path('service_delete', { 'id': entity.id }) }}" method="post"> #}
+{#             {{ form_widget(delete_form) }} #}
+{#             <button type="submit">BORRAR</button></form> #}
+{#     </li> #}
+{# </ul> #}
+    <!-- <tr><td class="tabla_datos_sin_borde"><form action="{{ path('node') }}"><button type="submit">ATRAS</button></form></td> -->
+    <tr><td class="tabla_datos_sin_borde"><form><input type="button" value="ATRAS" onClick="history.back();"></form></td>
+        <td class="tabla_datos_sin_borde"><form action="{{ path('service_edit', { 'id': entity.id }) }}"><button type="submit">EDITAR</button></form></td>
+        <td class="tabla_datos_sin_borde"><form action="{{ path('service_copy', { 'id': entity.id }) }}"><button type="submit">COPIAR</button></form></td>
+        <td class="tabla_datos_sin_borde"><form action="{{ path('service_delete', { 'id': entity.id }) }}" method="post">{{ form_widget(delete_form) }}<button type="submit">BORRAR</button></form></td>
+        <td class="tabla_datos_sin_borde"></td>
+        <td class="tabla_datos_sin_borde"></td>
+        <td class="tabla_datos_sin_borde"></td>
+    </tr>
+</table>
+{# <form action="{{ path('node_delete', { 'id': entity.id }) }}" method="post">#}
+{#     {{ form_widget(delete_form) }} <button type="submit">BORRAR</button>#}
+{# </form> #}
+{# <!-- <ul class="record_actions"> --> #}
+{#     <!-- <a href="{ { path('node') }}"> #}
+{#             Back to the list #}
+{#         </a> --> #}
+{#         <form action="{{ path('node') }}"><button type="submit">ATRAS</button></form> #}
+{# </form> #}
+
+{% endblock hegesappbody %}

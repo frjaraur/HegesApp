@@ -1,0 +1,30 @@
+monitor:
+    pattern:  /
+    defaults: { _controller: "HegesAppMonitorBundle:Monitor:index" }
+
+monitor_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "HegesAppMonitorBundle:Monitor:show" }
+
+monitor_new:
+    pattern:  /admin/new
+    defaults: { _controller: "HegesAppMonitorBundle:Monitor:new" }
+
+monitor_create:
+    pattern:  /admin/create
+    defaults: { _controller: "HegesAppMonitorBundle:Monitor:create" }
+    requirements: { _method: post }
+
+monitor_edit:
+    pattern:  /admin/{id}/edit
+    defaults: { _controller: "HegesAppMonitorBundle:Monitor:edit" }
+
+monitor_update:
+    pattern:  /admin/{id}/update
+    defaults: { _controller: "HegesAppMonitorBundle:Monitor:update" }
+    requirements: { _method: post }
+
+monitor_delete:
+    pattern:  /admin/{id}/delete
+    defaults: { _controller: "HegesAppMonitorBundle:Monitor:delete" }
+    requirements: { _method: post }

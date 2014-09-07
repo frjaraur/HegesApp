@@ -1,0 +1,13 @@
+{% extends 'HegesAppMainBundle:Default:hegesappbase.html.twig' %}
+{% block hegesappbody %}
+<table align="center" vertical-align="middle">
+    <tr><td class="ico_home_img"><a class="ico_home_img" href="{{ path('configfile') }}"><img class="ico_home_img" src="/hegesapp/bundles/hegesappmain/img/ico-configuracion.jpg"></a></td>
+        <td class="ico_home_img"><a class="ico_home_img" href="{{ path('graph_main') }}"><img class="ico_home_img" src="/hegesapp/bundles/hegesappmain/img/ico-rendimiento.jpg"></a></td></tr>
+    <tr><td class="ico_home_txt"><a class="ico_home_txt" href="{{ path('configfile') }}">Monitorización y configuración por Nodo</a></td>
+	    <td class="ico_home_txt"><a class="ico_home_txt" href="{{ path('graph_main') }}">Rendimiento por Nodo</a></td></tr>
+    <tr><td class="ico_home_img"><a class="ico_home_img" href="{{ path('server_main') }}"><img class="ico_home_img" src="/hegesapp/bundles/hegesappmain/img/ico-plataformas.jpg"></a></td>
+	    <td class="ico_home_img"><a class="ico_home_img" href="{{ path('alarm') }}"><img class="ico_home_img" src="/hegesapp/bundles/hegesappmain/img/ico-alarmas.jpg"></a></td></tr>
+	<tr><td class="ico_home_txt"><a class="ico_home_txt" href="{{ path('server_main') }}">Plataforma de Monitorización</a></td>
+	    <td class="ico_home_txt"><a class="ico_home_txt" href="{{ path('alarm') }}">Gestión de Alarmas</a></td></tr>
+</table>
+{% endblock hegesappbody %}

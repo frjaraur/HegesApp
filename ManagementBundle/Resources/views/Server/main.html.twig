@@ -1,0 +1,19 @@
+{% extends 'HegesAppMainBundle:Default:hegesappbase.html.twig' %}
+{% block hegesappbody %}
+<table>
+
+<tr>
+<td class="tabla_datos_sin_borde">
+	<form action="{{ path('server') }}">
+	<button type="submit">Servidores de la Plataforma de Monitorización</button>
+	</form>
+</td>
+<td class="tabla_datos_sin_borde">
+	<form action="{{ path('node') }}">
+	<button type="submit">Nodos Monitorizados</button>
+	</form>
+</td>
+</tr>
+</table>
+
+{%  endblock %}

@@ -1,0 +1,34 @@
+configlinetype:
+    pattern:  /
+    defaults: { _controller: "HegesAppConfigFileBundle:Configlinetype:index" }
+
+configlinetype_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "HegesAppConfigFileBundle:Configlinetype:show" }
+
+configlinetype_new:
+    pattern:  /admin/new
+    defaults: { _controller: "HegesAppConfigFileBundle:Configlinetype:new" }
+
+configlinetype_create:
+    pattern:  /admin/create
+    defaults: { _controller: "HegesAppConfigFileBundle:Configlinetype:create" }
+    requirements: { _method: post }
+
+configlinetype_edit:
+    pattern:  /admin/{id}/edit
+    defaults: { _controller: "HegesAppConfigFileBundle:Configlinetype:edit" }
+
+configlinetype_update:
+    pattern:  /admin/{id}/update
+    defaults: { _controller: "HegesAppConfigFileBundle:Configlinetype:update" }
+    requirements: { _method: post }
+
+configlinetype_delete:
+    pattern:  /admin/{id}/delete
+    defaults: { _controller: "HegesAppConfigFileBundle:Configlinetype:delete" }
+    requirements: { _method: post }
+    
+configlinetype_copy:
+    pattern:  /admin/{id}/copy
+    defaults: { _controller: "HegesAppConfigFileBundle:Configlinetype:copy" }

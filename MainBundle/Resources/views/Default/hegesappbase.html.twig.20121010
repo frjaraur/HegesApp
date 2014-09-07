@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="utf-8"><title>Portal de Herramientas de Gestión</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Le styles -->
+    <!-- <link href="../assets/css/bootstrap.css" rel="stylesheet"> -->
+    {% stylesheets '@HegesAppMainBundle/Resources/public/css/bootstrap.css' %}
+    <link href="{{ asset_url }}" rel="stylesheet">
+    {% endstylesheets %}
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!-- [if lt IE 9] -->
+	{% javascripts 
+        '@HegesAppMainBundle/Resources/public/js/bootstrap.js' 
+        '@HegesAppMainBundle/Resources/public/js/bootstrap.min.js'
+        '@HegesAppMainBundle/Resources/public/js/jquery.js'
+        '@HegesAppMainBundle/Resources/public/js/jquery.livesearch.js'
+        '@HegesAppMainBundle/Resources/public/js/jquery.tablesorter.js' %}
+	<script type="text/javascript" src="{{ asset_url }}"></script>
+	    	<!-- JQUERY -->
+	<script src="{{ asset('js/jquery.js') }}"></script>
+	<script src="{{ asset('js/jquery.livesearch.js') }}"></script>
+	<script src="{{ asset('js/jquery.tablesorter.js') }}"></script>
+	{% endjavascripts %}
+	
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+
+    <!-- [endif] -->
+    <!-- Le fav and touch icons -->
+    <link rel="shortcut icon" href="../assets/ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">
+	
+<!--    <script src="../../public/js/jquery.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../public/js/jquery.livesearch.js" type="text/javascript" charset="utf-8"></script> //-->
+    <script type="text/javascript" charset="utf-8">
+        (function($) { $(document).ready(function() { $('input[name="q"]').search('#names tr', function(on) {
+                on.all(function(results) {
+                    var size = results ? results.size() : 0
+                    $('#count').text(size + ' results');
+                    });
+                on.reset(function() {
+                    $('#none').hide();
+                    $('#names tr').show();
+                    });
+                on.empty(function() {
+                    $('#none').show();
+                    $('#names tr').hide();
+                    });
+                on.results(function(results) {
+                    $('#none').hide();
+                    $('#names tr').hide();
+                    results.show();
+                    });
+                });
+            });
+        })(jQuery);
+    </script>
+</head>
+<body>
+    <div class="navbar navbar-fixed-top">  
+        <div class="navbar-inner">
+            <div class="container">
+                <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </a>
+        {% image '@HegesAppMainBundle/Resources/public/img/logo-ono.png' %}
+                <img src="{{ asset_url }}" alt="Error" width="68" height="36">
+        {% endimage %}
+                <div>
+{#                 {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}#}
+{# {#                                 {% image '@HegesAppMainBundle/Resources/public/img/candado.png' %}#}
+{# {#                                <img src="{{ asset_url }}" alt="Candado" height="32" width="32">#}
+{# {# 								{% endimage %}#}
+{#                 {% endif %}#}
+                </div>
+                <a class="brand" href="{{ path('HegesAppMainBundle_homepage') }}">Portal de Herramientas de Gestión</a>
+                {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                    <div class="nav-collapse">
+                        <ul class="nav nav-pills">
+                        {% if is_granted("ROLE_ADMIN") %}
+                            {# <li class="active"><a href="{{ path('HegesAppMainBundle_homepage') }}">Main</a></li>#}
+                            {# <li class="active"><a href="{{ path('node') }}">Nodes</a></li>#}
+                            <li class="active"><a href="{{ path('nodemain') }}">Nodos</a></li>	
+                            <li class="active"><a href="{{ path('service') }}">Servicios</a></li>
+                            <li class="active"><a href="{{ path('monitor') }}">Monitores</a></li>
+                            <li class="active"><a href="{{ path('graph') }}">Gráficas</a></li>                         
+                            <li class="active"><a href="{{ path('configfile_main') }}">Configuraciones</a></li>
+                            <li class="active"><a href="{{ path('fos_user_security_logout') }}">{{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} ({{ 'layout.logout'|trans({}, 'FOSUserBundle') }})</a></li>
+                            <li>
+                           {#  %} {% if is_granted("ROLE_ADMIN") %} #}
+                               {% image '@HegesAppMainBundle/Resources/public/img/sysadmin.png' %}
+                               <img src="{{ asset_url }}" alt="Candado" height="28" width="28">
+                           </li>
+								{% endimage %}
+							{% else %}
+							<li class="active"><a href="{{ path('fos_user_security_logout') }}">{{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} ({{ 'layout.logout'|trans({}, 'FOSUserBundle') }})</a></li>
+							<li>
+								{% image '@HegesAppMainBundle/Resources/public/img/user.png' %}
+                                <img src="{{ asset_url }}" alt="Candado" height="28" width="28">
+								{% endimage %}
+                            </li>
+                            
+						{% endif %}
+                        </ul>
+                    </div></nav-collapse>
+                {% endif %}	
+            </div>
+        </div>
+    </div>
+    <div class="container">
+    </div> </container>
+    {% for key, message in app.session.getFlashes() %}
+        <div class="{{ key }}">
+        {{ message|trans({}, 'FOSUserBundle') }}
+        </div>
+    {% endfor %}
+    <div>
+    {% block fos_user_content %}
+    {% endblock fos_user_content %}
+    </div>   
+    {% block hegesappbody %}
+    {% endblock hegesappbody %}
+</body>
+</html>

@@ -1,0 +1,67 @@
+configfile:
+    pattern:  /
+    defaults: { _controller: HegesAppConfigFileBundle:Configfile:index }
+        
+configfile_nodeselect:
+    pattern:  /nodeselect/{nodeid}
+    defaults: { _controller: HegesAppConfigFileBundle:Configfile:selectednodeid }
+    
+configfile_serviceselect:
+    pattern:  /serviceselect/{serviceid}
+    defaults: { _controller: HegesAppConfigFileBundle:Configfile:selectedserviceid }
+    
+configfile_new:
+    pattern:  /new/{serviceid}/{linetypeid}
+    defaults: { _controller: HegesAppConfigFileBundle:Configfile:new }
+
+configfile_create:
+    pattern:  /create/{serviceid}/{linetypeid}
+    defaults: { _controller: HegesAppConfigFileBundle:Configfile:create, serviceid:0, linetypeid: 0}   
+
+configfile_add:
+    pattern:  /add/{lastdataid}
+    defaults: { _controller: HegesAppConfigFileBundle:Configfile:add, lastdataid: 0}    
+
+configfile_finished:
+    pattern:  /finished/{lastdataid}
+    defaults: { _controller: HegesAppConfigFileBundle:Configfile:finished, lastdataid: 0}
+
+configfile_main:
+    pattern:  /main
+    defaults: { _controller: HegesAppConfigFileBundle:Configfile:mainpage }
+        
+configfile_newconfigfiledata:
+    pattern:  /newconfigfiledata/{serviceid}/{lastdataid}/{fieldorder}
+    defaults: { _controller: HegesAppConfigFileBundle:Configfile:newconfigfiledata,serviceid:0, lastdataid:0, fieldorder:1 }
+
+configfile_createconfigfiledata:
+    pattern:  /createconfigfiledata/{serviceid}/{lastdataid}/{fieldorder}
+    defaults: { _controller: HegesAppConfigFileBundle:Configfile:createconfigfiledata,serviceid:0, lastdataid:0, fieldorder:1 }
+    
+configfile_editconfigfiledata:
+    pattern:  /editconfigfiledata/{dataid}
+    defaults: { _controller: HegesAppConfigFileBundle:Configfile:editconfigfiledata }
+    
+configfile_editconfigfile:
+    pattern:  /editconfigfile/{lineid}
+    defaults: { _controller: HegesAppConfigFileBundle:Configfile:editconfigfile }
+    
+configfile_export2csv:
+    pattern:  /configfile/export2csv/{serviceid}
+    defaults: { _controller: HegesAppConfigFileBundle:Configfile:export2csv}
+
+configfile_dumpfile:
+    pattern:  /configfile/dumpfile/{serviceid}
+    defaults: { _controller: HegesAppConfigFileBundle:Configfile:dumpfile }
+
+configfile_applyfile:
+    pattern:  /configfile/applyfile/{serviceid}
+    defaults: { _controller: HegesAppConfigFileBundle:Configfile:applyfile }
+    
+configfile_dumpmultiplefiles:
+    pattern:  /configfile/dumpmultiplefiles/{nodeid}
+    defaults: { _controller: HegesAppConfigFileBundle:Configfile:dumpmultiplefiles }                                              
+
+configfile_applymultiplefiles:
+    pattern:  /configfile/applymultiplefiles/{nodeid}
+    defaults: { _controller: HegesAppConfigFileBundle:Configfile:applymultiplefiles } 

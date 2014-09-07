@@ -1,0 +1,19 @@
+alarm:
+    pattern:  /
+    defaults: { _controller: "HegesAppAlarmsBundle:Alarm:index" }
+alarm_nodeindex:
+    pattern:  /node
+    defaults: { _controller: "HegesAppAlarmsBundle:Alarm:ovonodeindex" } 
+alarm_ovoprofile:
+    pattern:  /{ovoprofile}
+    defaults: { _controller: "HegesAppAlarmsBundle:Alarm:ovoalarms" }
+
+alarm_ovonodeact:
+    pattern:  /nodeactalarms/{nodename}
+    defaults: { _controller: "HegesAppAlarmsBundle:Alarm:ovonodeactalarms" }
+
+alarm_ovonodehist:
+    pattern:  /nodehistalarms/{nodename}
+    defaults: { _controller: "HegesAppAlarmsBundle:Alarm:ovonodehistalarms" }
+    
+   

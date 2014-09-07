@@ -1,0 +1,43 @@
+#Rendimiento CPU SOLARIS
+--title
+Uso de CPU y Memoria en el nodo NODENAME 
+--watermark
+ONO - Produccion de Sistemas - Herramientas de Gestion
+--upper-limit
+100
+--lower-limit
+0
+--width
+800
+--height
+400
+DEF:var1=/opt/nagios/var/perfdata/NODENAME/GBL_COLLECT_UNIX.rrd:1:AVERAGE
+DEF:var2=/opt/nagios/var/perfdata/NODENAME/GBL_COLLECT_UNIX.rrd:2:AVERAGE
+DEF:var3=/opt/nagios/var/perfdata/NODENAME/GBL_COLLECT_UNIX.rrd:3:AVERAGE
+DEF:var4=/opt/nagios/var/perfdata/NODENAME/GBL_COLLECT_UNIX.rrd:5:AVERAGE
+DEF:var5=/opt/nagios/var/perfdata/NODENAME/GBL_COLLECT_UNIX.rrd:6:AVERAGE
+DEF:var6=/opt/nagios/var/perfdata/NODENAME/GBL_COLLECT_UNIX.rrd:7:AVERAGE
+LINE1:var1#000000:UserCPU
+GPRINT:var1:LAST:%3.4lg %spercent Last
+GPRINT:var1:MAX:%3.4lg %spercent Max
+GPRINT:var1:AVERAGE:%3.4lg %spercent Average \\n
+LINE1:var2#00ff00:SystemCPU
+GPRINT:var2:LAST:%3.4lg %spercent Last
+GPRINT:var2:MAX:%3.4lg %spercent Max
+GPRINT:var2:AVERAGE:%3.4lg %spercent Average\\n
+LINE2:var3#ff0000:TotalCPU
+GPRINT:var3:LAST:%3.4lg %spercent Last
+GPRINT:var3:MAX:%3.4lg %spercent Max
+GPRINT:var3:AVERAGE:%3.4lg %spercent Average\\n
+LINE1:var4#0000ff:WaitCPU
+GPRINT:var4:LAST:%3.4lg %spercent Last
+GPRINT:var4:MAX:%3.4lg %spercent Max
+GPRINT:var4:AVERAGE:%3.4lg %spercent Average\\n
+LINE1:var5#f0000f:RunQueue
+GPRINT:var5:LAST:%3.4lg %spercent Last
+GPRINT:var5:MAX:%3.4lg %s percent Max
+GPRINT:var5:AVERAGE:%3.4lg %s percent Average\\n
+LINE1:var6#ff00ff:MemoryUsage
+GPRINT:var6:LAST:%3.4lg %spercent Last
+GPRINT:var6:MAX:%3.4lg %spercent Max
+GPRINT:var6:AVERAGE:%3.4lg %spercent Average\\n

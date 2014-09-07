@@ -1,0 +1,25 @@
+{% extends 'HegesAppMainBundle:Default:hegesappbase.html.twig' %}
+{% block hegesappbody %}
+<p><h1 class="tabla_datos">TIOP DE NODO</h1></p>
+<table><tr><th class="tabla_datos">Id</th>
+            <th class="tabla_datos">Name</th>
+            <th class="tabla_datos">Description</th>
+        </tr>
+        <tr>
+            <td class="tabla_datos">{{ entity.id }}</td>
+            <td class="tabla_datos">{{ entity.name }}</td>
+            <td class="tabla_datos">{{ entity.description }}</td>
+        </tr>
+{#</table>
+<!--  <ul><li><a class="tabla_datos" href="{{ path('nodetype') }}">ATRAS</a></li> -->
+ <ul><li><form><input type="button" value="ATRAS" onClick="history.back();"></form></li>
+    <li><a class="tabla_datos" href="{{ path('nodetype_edit', { 'id': entity.id }) }}">EDITAR</a></li>
+    <li><form action="{{ path('nodetype_delete', { 'id': entity.id }) }}" method="post">{{ form_widget(delete_form) }}<button type="submit">BORRAR</button></form></li>
+</ul> #}
+        <!-- <tr><td class="tabla_datos_sin_borde"><form action="{{ path('nodetype') }}"><button type="submit">ATRAS</button></form></td> -->
+        <tr><td class="tabla_datos_sin_borde"><form><input type="button" value="ATRAS" onClick="history.back();"></form></td>
+            <td class="tabla_datos_sin_borde"><form action="{{ path('nodetype_edit', { 'id': entity.id }) }}"><button type="submit">EDITAR</button></form></td>
+            <td class="tabla_datos_sin_borde"><form action="{{ path('nodetype_delete', { 'id': entity.id }) }}" method="post">{{ form_widget(delete_form) }}<button type="submit">BORRAR</button></form></td>
+        </tr>
+</table>
+{% endblock hegesappbody %}

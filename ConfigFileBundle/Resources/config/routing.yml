@@ -1,0 +1,20 @@
+HegesAppConfigFileBundle_configline:
+    resource: "@HegesAppConfigFileBundle/Resources/config/routing/configline.yml"
+    prefix:   /configline
+
+HegesAppConfigFileBundle_configlinetype:
+    resource: "@HegesAppConfigFileBundle/Resources/config/routing/configlinetype.yml"
+    prefix:   /configlinetype
+    
+HegesAppConfigFileBundle_configfield:
+    resource: "@HegesAppConfigFileBundle/Resources/config/routing/configfield.yml"
+    prefix:   /configfield
+    
+HegesAppConfigFileBundle_data:
+    resource: "@HegesAppConfigFileBundle/Resources/config/routing/data.yml"
+    prefix:   /data
+ 
+HegesAppConfigFileBundle_configfile:
+    resource: "@HegesAppConfigFileBundle/Resources/config/routing/configfile.yml"
+    prefix:   /configfile
+    

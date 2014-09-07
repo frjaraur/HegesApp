@@ -1,0 +1,34 @@
+{% extends 'HegesAppMainBundle:Default:hegesappbase.html.twig' %}
+{% block hegesappbody %}
+<form><input type="button" value="CERRAR" onclick="window.open('', '_self', ''); window.close();"></form>
+{# {{ imagename }} {{ graphname }} {{ nodename }}#}
+<table align="center"><tr><td widht="800" height="500"><img src="/hegesapp/tmp/{{ imagename }}"></td>
+           <td><table>
+               <tr><td class="ico_home_txt"><a target="_blank" href="{{ path('graph_drawsimplegraph', { 'nodename': nodename , 'graphname': graphname})}}">Por defecto</a></td></tr>
+               <tr><td class="ico_home_txt"><a target="_blank" href="{{ path('graph_drawsimplegraph', { 'nodename': nodename , 'graphname': graphname, 'start': "now-6h",'end': "0" })}}">6 horas</a></td></tr>
+               <tr><td class="ico_home_txt"><a target="_blank" href="{{ path('graph_drawsimplegraph', { 'nodename': nodename , 'graphname': graphname, 'start': "now-12h",'end': "0" })}}">12 horas</a></td></tr>
+               <tr><td class="ico_home_txt"><a target="_blank" href="{{ path('graph_drawsimplegraph', { 'nodename': nodename , 'graphname': graphname, 'start': "now-24h",'end': "0" })}}">1 día</a></td></tr>
+               <tr><td class="ico_home_txt"><a target="_blank" href="{{ path('graph_drawsimplegraph', { 'nodename': nodename , 'graphname': graphname, 'start': "now-3d",'end': "0" })}}">3 días</a></td></tr>
+               <tr><td class="ico_home_txt"><a target="_blank" href="{{ path('graph_drawsimplegraph', { 'nodename': nodename , 'graphname': graphname, 'start': "now-7d",'end': "0" })}}">7 días</a></td></tr>
+               <tr><td class="ico_home_txt"><a target="_blank" href="{{ path('graph_drawsimplegraph', { 'nodename': nodename , 'graphname': graphname, 'start': "now-15d",'end': "0" })}}">15 días</a></td></tr>
+               <tr><td class="ico_home_txt"><a target="_blank" href="{{ path('graph_drawsimplegraph', { 'nodename': nodename , 'graphname': graphname, 'start': "now-1m",'end': "0" })}}">1 mes</a></td></tr>
+               <tr><td class="ico_home_txt"><a target="_blank" href="{{ path('graph_drawsimplegraph', { 'nodename': nodename , 'graphname': graphname, 'start': "now-2m",'end': "0" })}}">2 meses</a></td></tr>
+			   </table></td></tr>
+</table>
+			   
+<table class="tabla_datos" align="center" widht="600" height="10">			   
+               <tr>
+               <form action="{{ path('graph_drawcustomgraph', { 'nodename': nodename , 'graphname': graphname})}}" method="post">
+               <td class="tabla_datos_sin_borde"><label for="startdate">Fecha Inicial</label></td>
+               <td class="tabla_datos_sin_borde"><input type="text" size="10" id="startdate" class="ui-datepicker" name="startdate"></td>
+               <td class="tabla_datos_sin_borde"><label for="enddate">Fecha Fin</label></td>
+               <td class="tabla_datos_sin_borde"><input type="text" size="10" id="enddate" class="ui-datepicker" name="enddate"></td>
+               <td class="tabla_datos_sin_borde">
+               <input type="hidden" name="nodename" value="{{ nodename }}">
+               <input type="hidden" name="graphname" value="{{ graphname }}">
+               <button type="submit">OK</button>
+{#                 { 'nodename': nodename , 'graphname': graphname, 'start': "now-2m",'end': "0" })}}">#}
+               </form>
+               </tr>
+</table>
+{% endblock hegesappbody %}

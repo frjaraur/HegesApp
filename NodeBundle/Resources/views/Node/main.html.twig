@@ -1,0 +1,13 @@
+{% extends 'HegesAppMainBundle:Default:hegesappbase.html.twig' %}
+{% block hegesappbody %}
+<table><tr><td class="tabla_datos_sin_borde"><form action="{{ path('nodetype') }}"><button type="submit">CREAR/MODIFICAR TIPOS DE NODOS</button></form></td></tr>
+        <tr><td class="tabla_datos_sin_borde"><form action="{{ path('os') }}"><button type="submit">CREAR/MODIFICAR SO</button></form></td></tr>
+        <tr><td class="tabla_datos_sin_borde"><form action="{{ path('node') }}"><button type="submit">CREAR/MODIFICAR NODOS</button></form></td></tr>
+</table>
+{# <ul>
+    <li><a href="{{ path('nodetype') }}">Crear/Modificar Tipos de Nodos</a></li>
+    <li><a href="{{ path('os') }}">Crear/Modificar SO</a></li>
+    <li><a href="{{ path('node') }}">Crear/Modificar Nodos</a></li>
+</ul> #}
+<form><input type="button" value="ATRAS" onClick="history.back();"></form>
+{%  endblock %}
